@@ -1,0 +1,18 @@
+Class_ID        ConfidenceofAnnotation(by Google)       Class_Label
+/m/0284vy3	10	Train horn
+/m/05x_td	9	Air horn, truck horn
+/m/02mfyn	7	Car alarm
+/m/02rhddq	5	Reversing beeps
+/m/0199g	7	Bicycle
+/m/06_fw	8	Skateboard
+/m/012n7d	6	Ambulance (siren)
+/m/012ndj	8	Fire engine, fire truck (siren)
+/m/0dgbq	9	Civil defense siren
+/m/04qvtq	8	Police car (siren)
+/m/03qc9zr	8	Screaming
+/m/0k4j	10	Car
+/t/dd00134	5	Car passing by
+/m/01bjv	7	Bus
+/m/07r04	8	Truck
+/m/04_sv	9	Motorcycle
+/m/07jdr	6	Train
