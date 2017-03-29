@@ -47,15 +47,15 @@ Groundtruth strong labels: groundtruth_strong_label_testing_set.csv groundtruth_
 ---
 Usage
 ---
-$python download_youtube_audio_from_csv_and_delete_original_standalone.py  <CSV filename - relative path is also fine>
-Sample Usage -  python download_youtube_audio_from_csv_and_delete_original_standalone.py training_set.csv 
+$python download_audio.py  <CSV filename - relative path is also fine>
+Sample Usage -  python download_audio.py training_set.csv 
 ---
 
 ---
 User Modifiable Parameters and Options 
 ---
 1. Audio formatting can be modified in the "format_audio" method defined in the script download_youtube_audio_from_csv_and_delete_original.py
-2. Removal of original audio and/or formatted audio paths can be done by uncommenting and modifying <os.system(cmdstring2)> in "download_audio_method" function defined in download_youtube_audio_from_csv_and_delete_original_standalone.py
+2. Removal of original audio and/or formatted audio paths can be done by uncommenting and modifying <os.system(cmdstring2)> in "download_audio_method" function defined in download_audio.py
 
 ---
 Output
