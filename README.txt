@@ -1,10 +1,20 @@
+# Task-4-Large-scale-weakly-supervised-sound-event-detection-for-smart-cars
+Task 4 Large-scale weakly supervised sound event detection for smart cars
+
+Note: Ground truth with strong labels for testing are coming soon.
+
 ---
-Author: Ankit P Shah (and Benjamin Elizalde)
-Please send questions to email: ankit.tronix@gmail.com and bmartin1@andrew.cmu.edu
+Coordinators:
+Benjamin Elizalde, Emmanuel Vincent, Bhiksha Raj
+Data Preparation,Annotations and Baseline:
+Ankit Shah, Anurag Kumar, Rohan Badlani
 ---
+
 
 ---
 Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+Author: Ankit P Shah (and Benjamin Elizalde)
+Please send questions to email: ankit.tronix@gmail.com and bmartin1@andrew.cmu.edu
 ---
 
 ---
