@@ -34,7 +34,7 @@ Features
 3. Extracts the 10-sec segments from the formatted audio according to the start and end times.  
 4. The script output includes the audio for 1,2 and 3, unless testing script is modified to remove audio from 2 and/or 3, that is the original audio and the formatted audio. 
 5. To denote a unique identifier for every run/launch of downloading files - script stores the timestamp and assigns to each of the output files and folder names.  
-6. Please, contact the Author in case one or more videos are not properly downloaded/available, or with any other issue. It's also acceptable for participants to create their own scripts to dowload the audio.
+6. Please, contact the Author in case one or more videos are not properly downloaded/available, or with any other issue. Participants can create their own scripts to download the audio.
 ---
 
 ---
