@@ -34,7 +34,7 @@ Features
 3. Extracts the 10-sec segments from the formatted audio according to the start and end times.  
 4. The script output includes the audio for 1,2 and 3, unless testing script is modified to remove audio from 2 and/or 3, that is the original audio and the formatted audio. 
 5. To denote a unique identifier for every run/launch of downloading files - script stores the timestamp and assigns to each of the output files and folder names.  
-6. Please, contact the Author in case one or more videos are not properly downloaded/available, or with any other issue.
+6. Please, contact the Author in case one or more videos are not properly downloaded/available, or with any other issue. Participants can create their own scripts to download the audio.
 ---
 
 ---
@@ -47,15 +47,15 @@ Groundtruth strong labels: groundtruth_strong_label_testing_set.csv groundtruth_
 ---
 Usage
 ---
-$python download_youtube_audio_from_csv_and_delete_original_standalone.py  <CSV filename - relative path is also fine>
-Sample Usage -  python download_youtube_audio_from_csv_and_delete_original_standalone.py training_set.csv 
+$python download_audio.py  <CSV filename - relative path is also fine>
+Sample Usage -  python download_audio.py training_set.csv 
 ---
 
 ---
 User Modifiable Parameters and Options 
 ---
 1. Audio formatting can be modified in the "format_audio" method defined in the script download_youtube_audio_from_csv_and_delete_original.py
-2. Removal of original audio and/or formatted audio paths can be done by uncommenting and modifying <os.system(cmdstring2)> in "download_audio_method" function defined in download_youtube_audio_from_csv_and_delete_original_standalone.py
+2. Removal of original audio and/or formatted audio paths can be done by uncommenting and modifying <os.system(cmdstring2)> in "download_audio_method" function defined in download_audio.py
 
 ---
 Output
