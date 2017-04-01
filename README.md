@@ -37,42 +37,30 @@ Download audio: testing_set.csv, training_set.csv
 Groundtruth weak labels: groundtruth_weak_label_testing_set.csv groundtruth_weak_label_training_set.csv
 Groundtruth strong labels: groundtruth_strong_label_testing_set.csv groundtruth_strong_label_training_set.csv
 
---------------------------------------
 Usage
---------------------------------------
+
 $python download_audio.py  <CSV filename - relative path is also fine>
 Sample Usage -  python download_audio.py training_set.csv 
 
---------------------------------------
-
---------------------------------------
 User Modifiable Parameters and Options 
---------------------------------------
+
 1. Audio formatting can be modified in the "format_audio" method defined in the script download_youtube_audio_from_csv_and_delete_original.py
 2. Removal of original audio and/or formatted audio paths can be done by uncommenting and modifying <os.system(cmdstring2)> in "download_audio_method" function defined in download_audio.py
 
---------------------------------------
+
 Output
---------------------------------------
-Output Audio paths 
+
 -First folder contains original best audio from youtube: 
 <csv_name>_<testing/training>_<timestamp>_audio_downloaded 
 -Second folder contains the corresponding formatted audio:
 <csv_name>_<testing/training>_<timestamp>_audio_formatted_downloaded
 -Third folder contains the extracted 10-sec segments:
 <csv_name>_<testing/training>_<timestamp>_audio_formatted_downloaded_and_ssegmented_downloads
-
 Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
---------------------------------------
 
---------------------------------------
 Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
---------------------------------------
 
---------------------------------------
 Usage
---------------------------------------
 
 Evaluation Scripts Usage:
 $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
---------------------------------------
