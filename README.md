@@ -1,10 +1,10 @@
-Task 4 Large-scale weakly supervised sound event detection for smart cars
+# Task 4 Large-scale weakly supervised sound event detection for smart cars
 --------------------------------------
 
 Note: Ground truth with strong labels for testing are coming soon.
 
 --------------------------------------
-# Contributors:
+Contributors:
 --------------------------------------
 
 ## Coordinators:
@@ -18,21 +18,24 @@ Ankit Shah, Anurag Kumar, Rohan Badlani
 ## Evaluation of DCASE 2017 Task A Submissions
 
 Rohan Badlani
---------------------------------------
 
 
 --------------------------------------
-# Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
 --------------------------------------
+
 Author: Rohan Badlani
 Please send questions to email: rohan.badlani@gmail.com
+
 --------------------------------------
 
 --------------------------------------
-# Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
 --------------------------------------
+
 Author: Ankit P Shah (and Benjamin Elizalde)
 Please send questions to email: ankit.tronix@gmail.com and bmartin1@andrew.cmu.edu
+
 --------------------------------------
 
 --------------------------------------
@@ -70,7 +73,8 @@ $python download_audio.py  <CSV filename - relative path is also fine>
 Sample Usage -  python download_audio.py training_set.csv 
 
 Evaluation Scripts Usage:
-python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
+$python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
+
 --------------------------------------
 
 --------------------------------------
