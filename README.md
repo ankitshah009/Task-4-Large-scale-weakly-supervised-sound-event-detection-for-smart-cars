@@ -5,19 +5,33 @@ Task 4 Large-scale weakly supervised sound event detection for smart cars
 Note: Ground truth with strong labels for testing are coming soon.
 
 --------------------------------------
-#Coordinators:
-Benjamin Elizalde, Emmanuel Vincent, Bhiksha Raj
-
-#Data Preparation,Annotations and Baseline:
-Ankit Shah, Anurag Kumar, Rohan Badlani
-
-#Evaluation of DCASE 2017 Task A Submissions:
-Rohan Badlani
+# Contributors:
 --------------------------------------
 
+# Coordinators:
+
+## Benjamin Elizalde, Emmanuel Vincent, Bhiksha Raj
+
+# Data Preparation,Annotations and Baseline:
+
+## Ankit Shah, Anurag Kumar, Rohan Badlani
+
+# Evaluation of DCASE 2017 Task A Submissions
+
+## Rohan Badlani
+--------------------------------------
+
+
+--------------------------------------
+Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+--------------------------------------
+Author: Rohan Badlani
+Please send questions to email: rohan.badlani@gmail.com
+--------------------------------------
 
 --------------------------------------
 Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+--------------------------------------
 Author: Ankit P Shah (and Benjamin Elizalde)
 Please send questions to email: ankit.tronix@gmail.com and bmartin1@andrew.cmu.edu
 --------------------------------------
