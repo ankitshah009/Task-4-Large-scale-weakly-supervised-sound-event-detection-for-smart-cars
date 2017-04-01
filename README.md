@@ -3,20 +3,21 @@
 Note: Ground truth with strong labels for testing are coming soon.
 
 
-## Coordinators:
+## Coordinators
 
 Benjamin Elizalde, Emmanuel Vincent, Bhiksha Raj
 
-## Data Preparation, Annotations:
+## Data Preparation, Annotations
 
 Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
-## Annotations, Baseline and Subtask A Metric:
+## Annotations, Baseline and Subtask A Metric
 
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
-## Index:
+## Index
 1 Script to download the development data for Task 4
+
 2 Script to evaluate Task 4 - Subtask A (Audio tagging)
 
 1 Script to download the development data for Task 4
