@@ -15,9 +15,11 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
-#Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+-------------------------------------------------
 
 Prerequisite installations
+
 1. youtube-dl - [sudo] pip install --upgrade youtube_dl
 2. pafy -  [sudo] pip install pafy
 3. tqdm (progress bar) -  [sudo] pip install tqdm
@@ -25,6 +27,7 @@ Prerequisite installations
 5. sox tool - sudo apt-get install sox
 
 Features
+
 1. Downloads the audio from the videos for the testing set first and then for the training set. - Multiprocessing - ensures three files are downloaded simultaneously to reduce the heavy download time to 40 percent as compared with single threaded performance.  
 2. Formats the audio with consistent parameters - currently set as 1 channel, 16 bit precision, 44.1kHz sampling rate. 
 3. Extracts the 10-sec segments from the formatted audio according to the start and end times.  
@@ -33,6 +36,7 @@ Features
 6. Please, contact the Author in case one or more videos are not properly downloaded/available, or with any other issue. Participants can create their own scripts to download the audio.
 
 Lists
+
 Download audio: testing_set.csv, training_set.csv
 Groundtruth weak labels: groundtruth_weak_label_testing_set.csv groundtruth_weak_label_training_set.csv
 Groundtruth strong labels: groundtruth_strong_label_testing_set.csv groundtruth_strong_label_training_set.csv
@@ -47,7 +51,6 @@ User Modifiable Parameters and Options
 1. Audio formatting can be modified in the "format_audio" method defined in the script download_youtube_audio_from_csv_and_delete_original.py
 2. Removal of original audio and/or formatted audio paths can be done by uncommenting and modifying <os.system(cmdstring2)> in "download_audio_method" function defined in download_audio.py
 
-
 Output
 
 -First folder contains original best audio from youtube: 
@@ -60,6 +63,7 @@ Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg
 
 Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
 -------------------------------------------------
+
 Usage
 
 Evaluation Scripts Usage:
