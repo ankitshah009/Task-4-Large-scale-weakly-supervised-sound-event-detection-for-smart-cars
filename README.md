@@ -3,21 +3,18 @@
 
 Note: Ground truth with strong labels for testing are coming soon.
 
---------------------------------------
-Contributors:
---------------------------------------
 
 ## Coordinators:
 
 Benjamin Elizalde, Emmanuel Vincent, Bhiksha Raj
 
-## Data Preparation, Annotations and Baseline:
+## Data Preparation, Annotations:
 
-Ankit Shah, Anurag Kumar, Rohan Badlani
+Ankit Shah, Benjamin Elizalde
 
-## Evaluation of DCASE 2017 Task A Submissions
+## Annotations, Baseline and Subtask A Metric:
 
-Rohan Badlani
+Rohan Badlani, Benjamin Elizalde
 
 
 --------------------------------------
