@@ -15,7 +15,11 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
-Script to download the development data for Task 4
+## Index:
+1 Script to download the development data for Task 4
+2 Script to evaluate Task 4 - Subtask A (Audio tagging)
+
+1 Script to download the development data for Task 4
 -------------------------------------------------
 
 Prerequisite installations
@@ -61,7 +65,7 @@ Output
 <csv_name>_<testing/training>_<timestamp>_audio_formatted_downloaded_and_ssegmented_downloads
 Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
 
-Script to evaluate Task 4 - Subtask A (Audio tagging)
+2 Script to evaluate Task 4 - Subtask A (Audio tagging)
 -------------------------------------------------
 
 Usage
