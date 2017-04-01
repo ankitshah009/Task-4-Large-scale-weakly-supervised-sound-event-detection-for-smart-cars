@@ -1,28 +1,15 @@
 #Code Contributor: Rohan Badlani, Email: rohan.badlani@gmail.com
 import os
 import sys
-
-class FileFormat(object):
-	def readLabels(self):
-		try:
-			#Filename will act as key and labels list will be the value 
-			labelsDict = {}
-			with open(self.filepath) as filename:
-				for line in filename:
-					
-
-	def __init__(self, filepath):
-		self.filepath = filepath
-		self.labelDict = self.readLabels()
-
-	
+from Models import *
 
 def evaluateMetrics(groundtruth_filepath, predicted_filepath, output_filepath):
 	#Load GroundTruth to memory, indexed by 
-	with open 
+	groundTruthDS = FileFormat(groundtruth_filepath)
+	preditedDS = FileFormat(predicted_filepath)
 
 if __name__ == "__main__":
-	if len(sys.argv) != 3:
+	if len(sys.argv) != 4:
 		print "Running Instruction: python TaskAEvaluate.py <groundtruth_filepath> <predicted_filepath> <output_filepath>"
 	else:
-		evaluateMetrics(sys.argv[1], sys.argv[2], sys.agv[3])
+		evaluateMetrics(sys.argv[1], sys.argv[2], sys.argv[3])
