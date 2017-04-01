@@ -1,0 +1,4 @@
+Precision = 99.6710526316
+Recall = 100.0
+F1 Score = 99.8352553542
+Number of Audio Files = 488
