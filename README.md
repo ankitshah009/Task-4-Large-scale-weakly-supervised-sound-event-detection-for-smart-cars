@@ -1,7 +1,7 @@
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
 Note: Ground truth with strong labels for testing are coming soon.
-
+Updated Apr1: Updated Readme.md and added evaluation folder. 
 
 ## Coordinators
 
