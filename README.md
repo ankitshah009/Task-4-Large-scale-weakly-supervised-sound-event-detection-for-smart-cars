@@ -62,13 +62,13 @@ User Modifiable Parameters and Options
 
 Output
 
--First folder contains original best audio from youtube: 
+1. First folder contains original best audio from youtube: 
 <csv_name>_<testing/training>_<timestamp>_audio_downloaded 
--Second folder contains the corresponding formatted audio:
+2. Second folder contains the corresponding formatted audio:
 <csv_name>_<testing/training>_<timestamp>_audio_formatted_downloaded
--Third folder contains the extracted 10-sec segments:
+3. Third folder contains the extracted 10-sec segments:
 <csv_name>_<testing/training>_<timestamp>_audio_formatted_downloaded_and_ssegmented_downloads
-Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
+#Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
 
 
 -------------------------------------------------
