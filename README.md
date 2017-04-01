@@ -15,7 +15,7 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
-Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+#Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
 
 Prerequisite installations
 1. youtube-dl - [sudo] pip install --upgrade youtube_dl
@@ -59,7 +59,7 @@ Output
 Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
 
 Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
-
+-------------------------------------------------
 Usage
 
 Evaluation Scripts Usage:
