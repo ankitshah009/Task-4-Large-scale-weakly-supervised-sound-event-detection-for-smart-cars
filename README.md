@@ -15,7 +15,7 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
-Script to download the development data for Task 4.
+Script to download the development data for Task 4
 -------------------------------------------------
 
 Prerequisite installations
@@ -66,5 +66,4 @@ Script to evaluate Task 4 - Subtask A (Audio tagging)
 
 Usage
 
-Evaluation Scripts Usage:
 $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
