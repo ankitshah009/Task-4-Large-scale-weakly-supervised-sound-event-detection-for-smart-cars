@@ -15,9 +15,7 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
---------------------------------------
 Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
---------------------------------------
 
 --------------------------------------
 Prerequisite installations
