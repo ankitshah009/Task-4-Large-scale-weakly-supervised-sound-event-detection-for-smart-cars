@@ -10,29 +10,14 @@ Benjamin Elizalde, Emmanuel Vincent, Bhiksha Raj
 
 ## Data Preparation, Annotations:
 
-Ankit Shah, Benjamin Elizalde
+Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 ## Annotations, Baseline and Subtask A Metric:
 
-Rohan Badlani, Benjamin Elizalde
-
-
---------------------------------------
-Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
---------------------------------------
-
-Author: Rohan Badlani
-Please send questions to email: rohan.badlani@gmail.com
-
---------------------------------------
+Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 --------------------------------------
 Script to download the development data for Task 4: Large-scale weakly supervised sound event detection for smart cars.
---------------------------------------
-
-Author: Ankit P Shah (and Benjamin Elizalde)
-Please send questions to email: ankit.tronix@gmail.com and bmartin1@andrew.cmu.edu
-
 --------------------------------------
 
 --------------------------------------
@@ -69,9 +54,6 @@ Usage
 $python download_audio.py  <CSV filename - relative path is also fine>
 Sample Usage -  python download_audio.py training_set.csv 
 
-Evaluation Scripts Usage:
-$python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
-
 --------------------------------------
 
 --------------------------------------
@@ -91,5 +73,17 @@ Output Audio paths
 -Third folder contains the extracted 10-sec segments:
 <csv_name>_<testing/training>_<timestamp>_audio_formatted_downloaded_and_ssegmented_downloads
 
---------------------------------------
 Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
+--------------------------------------
+
+--------------------------------------
+Script to evaluate the submission for Task 4: Large-scale weakly supervised sound event detection for smart cars.
+--------------------------------------
+
+--------------------------------------
+Usage
+--------------------------------------
+
+Evaluation Scripts Usage:
+$python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
+--------------------------------------
