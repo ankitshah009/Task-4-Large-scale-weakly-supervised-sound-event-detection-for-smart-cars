@@ -8,6 +8,19 @@ def evaluateMetrics(groundtruth_filepath, predicted_filepath, output_filepath):
 	groundTruthDS = FileFormat(groundtruth_filepath)
 	preditedDS = FileFormat(predicted_filepath)
 
+	#simple audioFileCheck
+	if len(groundTruthDS.labelsDict.keys()) != len(preditedDS.labelsDict.keys()):
+		print "The prediction file submitted does not have prediction for all the audio files"
+		sys.exit(1)
+
+	#complex check for audioFile
+	if not groundTruthDS.validatePredictedDS(preditedDS):
+		print "The prediction file submitted does not have prediction for all the audio files"
+		sys.exit(1)
+
+	#the submission is valid. Compute Metrics and Push to File
+	groundTruthDS.computeMetrics(preditedDS, output_filepath)
+
 if __name__ == "__main__":
 	if len(sys.argv) != 4:
 		print "Running Instruction: python TaskAEvaluate.py <groundtruth_filepath> <predicted_filepath> <output_filepath>"
