@@ -20,6 +20,8 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 
 2. Script to evaluate Task 4 - Subtask A (Audio tagging)
 
+3. Strong Label's annotations
+
 
 -------------------------------------------------
 
@@ -81,3 +83,14 @@ Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg
 Usage
 
 $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
+
+
+-------------------------------------------------
+
+
+3. Strong Label's annotations
+-------------------------------------------------
+
+1. Only one person was involved in the annotation of each 10-sec clip. 
+2. The sound event annotation was based on the audio and not the video.
+3. The format of strong labels are: "videoID_10secID start-time end-time class".
