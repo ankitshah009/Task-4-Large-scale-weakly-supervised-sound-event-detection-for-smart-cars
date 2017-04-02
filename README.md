@@ -93,4 +93,5 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 
 1. Only one person was involved in the annotation of each 10-sec clip. 
 2. The sound event annotation was based on the audio and not the video.
-3. The format of strong labels are: "videoID_10secID start-time end-time class".
+3. The strong labels correspond to the file: groundtruth_strong_label_training_set.csv
+4. The format of strong labels are: "videoID_10secID start-time end-time class".
