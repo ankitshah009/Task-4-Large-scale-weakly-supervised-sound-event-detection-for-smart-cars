@@ -1,7 +1,8 @@
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
-Note: Ground truth with strong labels for testing are coming soon.
-Last update Apr1: Updated Readme.md and added evaluation folder. 
+Coming soon: Baseline performance. Baseline system will be based on Task 3's system.
+Last update Apr2: Updated Readme.md and added strong labels.
+Update Apr1: Updated Readme.md and added evaluation folder. 
 
 ## Coordinators
 
