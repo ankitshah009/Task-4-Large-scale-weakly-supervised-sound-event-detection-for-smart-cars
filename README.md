@@ -95,3 +95,4 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 2. The sound event annotation was based on the audio and not the video.
 3. The strong labels correspond to the file: groundtruth_strong_label_training_set.csv
 4. The format of strong labels are: "videoID_10secID start-time end-time class".
+5. Less than 2% of the 10-sec clips had the presence of a sound according to AudioSet, but didn't actually contain the sound event. Thus start and end time were assigned 0.
