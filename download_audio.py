@@ -9,6 +9,7 @@ import multiprocessing
 from multiprocessing import Pool
 from tqdm import tqdm
 
+#Format audio - 16 bit Signed PCM audio sampled at 44.1kHz
 def format_audio(input_audio_file,output_audio_file):
 	temp_audio_file = output_audio_file.split('.wav')[0] + '_temp.wav'
 	cmdstring = "ffmpeg -loglevel panic -i %s -ac 1 -ar 44100 %s" %(input_audio_file,temp_audio_file)
@@ -18,6 +19,7 @@ def format_audio(input_audio_file,output_audio_file):
 	cmdstring2 = "rm -rf %s" %(temp_audio_file)
 	os.system(cmdstring2)
 
+#Trim audio based on start time and duration of audio. 
 def trim_audio(input_audio_file,output_audio_file,start_time,duration):
 	#print input_audio_file
 	#print output_audio_file
@@ -27,6 +29,7 @@ def trim_audio(input_audio_file,output_audio_file,start_time,duration):
 def multi_run_wrapper(args):
    return download_audio_method(*args)
 
+#Method to download audio - Downloads the best audio available for audio id, calls the formatting audio function and then segments the audio formatted based on start and end time. 
 def download_audio_method(line,csv_file):
 	query_id = line.split(",")[0];
 	start_seconds = line.split(",")[1];
@@ -74,6 +77,8 @@ def download_audio_method(line,csv_file):
 		print "Error is ---> " + str(ex)
 	return ex1
 
+#Download audio - Reads 3 lines of input csv file at a time and passes them to multi_run wrapper which calls download_audio_method to download the file based on id.
+#Multiprocessing module spawns 3 process in parallel which runs download_audio_method. Multiprocessing, thus allows downloading process to happen in 40 percent of the time approximately to downloading sequentially - processing line by line of input csv file. 
 def download_audio(csv_file,timestamp):	
 	error_log = 'error' + timestamp + '.log'
 	with open(csv_file, "r") as segments_info_file:	
