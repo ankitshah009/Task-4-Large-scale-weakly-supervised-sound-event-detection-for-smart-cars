@@ -74,6 +74,10 @@ Output
 
 Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
 
+Number of Audio id count files 
+
+1. testing_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the testing set
+2. training_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the training set
 
 -------------------------------------------------
 
