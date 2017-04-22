@@ -38,6 +38,12 @@ Prerequisite installations
 4. multiprocessing - [sudo] pip install multiprocessing
 5. sox tool - sudo apt-get install sox
 
+Cloning this repository
+
+Since this is a repository that references DCASE2017-baseline-system as a submodule, you should use the following command to clone this repository completely:
+
+git clone --recurse <repo link>
+
 Features
 
 1. Downloads the audio from the videos for the testing set first and then for the training set. - Multiprocessing - ensures three files are downloaded simultaneously to reduce the heavy download time to 40 percent as compared with single threaded performance.  

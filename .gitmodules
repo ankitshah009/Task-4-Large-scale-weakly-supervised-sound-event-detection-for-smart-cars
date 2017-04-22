@@ -1,0 +1,3 @@
+[submodule "DCASE2017-baseline-system"]
+	path = DCASE2017-baseline-system
+	url = https://github.com/TUT-ARG/DCASE2017-baseline-system.git
