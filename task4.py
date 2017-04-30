@@ -11,6 +11,7 @@ sys.path.append(os.path.split(os.path.dirname(os.path.realpath(__file__)))[0])
 
 # Add DCASE baseline system if we are outside baseline system one directory
 sys.path.append('DCASE2017-baseline-system')
+sys.path.append('evaluation')
 import numpy
 import argparse
 import textwrap
@@ -30,6 +31,7 @@ from dcase_framework.decorators import before_and_after_function_wrapper
 from dcase_framework.containers import DottedDict
 from dcase_framework.files import ParameterFile
 
+from Models import *
 __version_info__ = ('1', '0', '0')
 __version__ = '.'.join(__version_info__)
 
@@ -64,9 +66,7 @@ class CustomAppCore(SoundEventAppCore):
             if self.params.get_path('evaluator.scene_handling') == 'scene-dependent':
                 tagging_overall_metrics_per_scene = {}
                 event_overall_metrics_per_scene = {}
-                print ("Scene Labels = " + str(enumerate(self.dataset.scene_labels)))
                 for scene_id, scene_label in enumerate(self.dataset.scene_labels):
-                    print (str(scene_id) + ", " + str(scene_label)) 
                     if scene_label not in event_overall_metrics_per_scene:
                         event_overall_metrics_per_scene[scene_label] = {}
 
@@ -75,7 +75,6 @@ class CustomAppCore(SoundEventAppCore):
                         time_resolution=1.0,
                     )
 
-                    print ("Segment Metric " + str(segment_based_metric))
 
                     event_based_metric = sed_eval.sound_event.EventBasedMetrics(
                         event_label_list=self.dataset.event_labels(scene_label=scene_label),
@@ -85,18 +84,12 @@ class CustomAppCore(SoundEventAppCore):
                         percentage_of_length=0.5
                     )
 
-                    print ("Event Metric " + str(event_based_metric))
-
                     for fold in self._get_active_folds():
                         result_filename = self._get_result_filename(fold=fold,
                                                                     scene_label=scene_label,
                                                                     path=self.params.get_path('path.recognizer'))
 
                         results = MetaDataContainer().load(filename=result_filename)
-
-                        print ("Result for fold = " + str(fold) + ", scene = " + str(scene_label) + " = " + str(results))
-
-                        print ("Test Files for fold = " + str(fold) + ", scene = " + str(scene_label) + " are " +  str(enumerate(self.dataset.test(fold, scene_label=scene_label).file_list)))
 
                         for file_id, audio_filename in enumerate(self.dataset.test(fold, scene_label=scene_label).file_list):
                             # Subtask A (audio tagging)
@@ -107,12 +100,9 @@ class CustomAppCore(SoundEventAppCore):
                             for result_item in results.filter(
                                     filename=posix_path(self.dataset.absolute_to_relative(audio_filename))
                             ):
-                                print ("result_item for class = " + str(scene_label) + ", file = " + str(audio_filename) + ": " + str(result_item))
                                 if 'event_label' in result_item and result_item.event_label:
                                     current_file_results.append(result_item)
 
-
-                            print ("Prediction for class = " + str(scene_label) + ", fold = " + str(fold) + " = " + str(current_file_results))
 
                             meta = []
                             
@@ -122,16 +112,39 @@ class CustomAppCore(SoundEventAppCore):
                                 if 'event_label' in meta_item and meta_item.event_label:
                                     meta.append(meta_item)
 
-                            print ("Actual for class = " + str(scene_label) + ", fold = " + str(fold) + " = " + str(meta))
+
+			    for item in meta:
+			    	#print ("Actual")
+			    	#print (item)
+			    	item = str(item)
+			    	item1 = item.split('|')[0].split('audio/')[1].lstrip()
+				item2 = item.split('|')[2].lstrip()
+				item3 = item.split('|')[3].lstrip()
+				item4 = item.split('|')[4].lstrip()
+			    	with open('groundtruth.txt','a') as file1:
+					file1.write(str(item1) + str("\t") +str(item2) + str("\t") + str(item3) + str("\t") +  str(item4) + str('\n'))
+				file1.close()
+
+			    for item in current_file_results:
+			    	#print ("Predicted")
+				#print (item)
+			   	item = str(item)
+				item1 = item.split('|')[0].split('audio/')[1].lstrip()
+				item2 = item.split('|')[2].lstrip()
+				item3 = item.split('|')[3].lstrip()
+				item4 = item.split('|')[4].lstrip()
+				with open('prediction.txt','a') as file2:
+					file2.write(str(item1) + str("\t") + str(item2) + str("\t") + str(item3) + str("\t") + str(item4) + str('\n'))
+				file2.close()
 
                             segment_based_metric.evaluate(
                                 reference_event_list=meta,
-                                estimated_event_list=meta
+                                estimated_event_list=current_file_results
                             )
 
                             event_based_metric.evaluate(
                                 reference_event_list=meta,
-                                estimated_event_list=meta
+                                estimated_event_list=current_file_results
                             )
 
                     #from IPython import embed
@@ -153,9 +166,14 @@ class CustomAppCore(SoundEventAppCore):
                 output += " \n"
                 output += "  Subtask A (tagging): Overall metrics \n"
                 output += "  =============== \n"
+		
 
                 # Insert audio tagging evaluation results here
+		GroundTruthDS = FileFormat('groundtruth.txt')
+		PredictedDS = FileFormat('prediction.txt')
 
+		output += GroundTruthDS.computeMetricsString(PredictedDS)
+		
                 output += " \n"
                 output += "  Subtask B (event detection): Overall metrics \n"
                 output += "  =============== \n"
@@ -247,6 +265,9 @@ class CustomAppCore(SoundEventAppCore):
                 }
                 ParameterFile(output_data, filename=output_file).save()
 
+	    with open("TaskB_metrics","w") as file1:
+	    	file1.write(output)
+	    file1.close()
             return output
 
 def main(argv):

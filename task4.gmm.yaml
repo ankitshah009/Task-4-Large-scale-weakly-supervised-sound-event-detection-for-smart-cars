@@ -1,7 +1,7 @@
-active_set: dcase2017
+active_set: minimal
 
 sets:
-  - set_id: dcase2017
+  - set_id: minimal
     description: Minimal GMM based system to test that everything works
     dataset:
       method: development
@@ -15,110 +15,26 @@ sets:
     feature_normalizer:
       enable: true
     feature_aggregator:
-      enable: true
-      aggregation_recipe: flatten
-      win_length_seconds: 0.1
-      hop_length_seconds: 0.02
+      enable: false
     learner:
-      method: mlp
+      method: gmm
       file_hop: 50
-
     learner_method_parameters:
-      mlp:
-        seed: 0
-        keras:
-          backend: theano
-          backend_parameters:
-            floatX: float64
-            device: gpu0
-            fastmath: false
-            optimizer: None
-            openmp: false
-            threads: 1
-            CNR: true
-
-        validation:
-          enable: false
-          setup_source: generated_scene_location_event_balanced
-          validation_amount: 0.10
-
-        training:
-          epochs: 2
-          batch_size: 256
-          shuffle: true
-          callbacks:
-            - type: EarlyStopping
-              parameters:
-                monitor: val_categorical_accuracy
-                min_delta: 0.001
-                patience: 10
-                verbose: 0
-                mode: max
-
-        model:
-          config:
-            - class_name: Dense
-              config:
-                units: 50
-                kernel_initializer: uniform
-                activation: relu
-
-            - class_name: Dropout
-              config:
-                rate: 0.2
-
-            - class_name: Dense
-              config:
-                units: 50
-                kernel_initializer: uniform
-                activation: relu
-
-            - class_name: Dropout
-              config:
-                rate: 0.2
-
-            - class_name: Dense
-              config:
-                units: CLASS_COUNT
-                kernel_initializer: uniform
-                activation: softmax
-
-          loss: categorical_crossentropy
-
-          optimizer:
-            type: Adam
-
-          metrics:
-            - categorical_accuracy
-
+      gmm:
+        n_components: 1
     recognizer:
-      enable: true
-
       frame_accumulation:
-        enable: false
-        type: sum
+        enable: true
+        type: sliding_sum
+        window_length_seconds: 1.0
       frame_binarization:
         enable: true
         type: global_threshold
-        threshold: 0.5
-
-      event_activity_processing:
-        enable: true
-        type: median_filtering
-        window_length_seconds: 0.54
-
+        threshold: 100
       event_post_processing:
         enable: true
-        minimun_event_length_seconds: 0.1
+        minimum_event_length_seconds: 0.1
         minimum_event_gap_second: 0.1
-        #type: majority_vote         # [maximum, majority_vote]
-
-    evaluator:
-      enable: true
-      show_details: true
-      saving:
-        enable: true
-        filename: eval_[{parameter_hash}].yaml
 
 defaults:
   # ==========================================================
