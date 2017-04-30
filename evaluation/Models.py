@@ -62,7 +62,7 @@ class FileFormat(object):
 				#for a predicted label
 				
 				#1. Check if it is present inside groundTruth, if yes push to TP, mark the existance of that groundtruth label
-				index = 0
+				index = 0 
 				for groundtruth_label in self.labelsDict[audioFile]:
 					if(predicted_label == groundtruth_label):
 						TP += 1
@@ -99,3 +99,43 @@ class FileFormat(object):
 			Metric_File.write("F1 Score = " + str(F1*100.0) + "\n")
 			Metric_File.write("Number of Audio Files = " + str(len(self.labelsDict.keys())))
 		Metric_File.close()
+
+	def computeMetricsString(self, predictedDS):
+		TP = 0
+		FP = 0
+		FN = 0
+		#iterate over predicted list
+		for audioFile in predictedDS.labelsDict.keys():
+			markerList = [0]*len(self.labelsDict[audioFile])
+			for predicted_label in predictedDS.labelsDict[audioFile]:
+				index = 0 
+				for groundtruth_label in self.labelsDict[audioFile]:
+					TP += 1
+					markerList[index] = 1
+					break
+				index += 1
+			if(index == len(self.labelsDict[audioFile])):
+				FP+=1
+		for marker in markerList:
+			if marker == 0:
+				FN+=1
+
+		if(TP + FP != 0):
+			Precision = float(TP) / float(TP + FP)
+		else:
+			Precision - 0.0
+		if(TP + FN != 0):
+			Recall = float(TP) / float(TP + FN)
+		else:
+			Recall = 0.0
+		if(Precision + Recall != 0.0):
+			F1 = 2*Precision*Recall / float(Precision + Recall)
+		else:
+			F1 = 0.0
+
+		output = ""
+		output += "\t\t\tPrecision = " + str(Precision*100.0) + "\n"
+		output += "\t\t\tRecall = " + str(Recall * 100.0) + "\n"
+		output += "\t\t\tF1 Score = " + str(F1*100.0) + "\n"
+		return output
+
