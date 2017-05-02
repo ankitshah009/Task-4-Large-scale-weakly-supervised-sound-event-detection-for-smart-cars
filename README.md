@@ -1,6 +1,6 @@
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
-Last update  May 1: Baseline code (based on Task 3's system) and performance ready.
+Last update  May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
 Update Apr2: Added strong labels.
 Update Apr1: Added evaluation folder. 
 
