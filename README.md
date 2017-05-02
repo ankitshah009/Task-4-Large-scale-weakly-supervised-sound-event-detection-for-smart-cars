@@ -1,3 +1,4 @@
+
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
 Last update  May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
@@ -37,6 +38,7 @@ Prerequisite installations
 3. tqdm (progress bar) -  [sudo] pip install tqdm
 4. multiprocessing - [sudo] pip install multiprocessing
 5. sox tool - sudo apt-get install sox
+6. ffmpeg - sudo apt-get install ffmpeg 
 
 Cloning this repository
 
