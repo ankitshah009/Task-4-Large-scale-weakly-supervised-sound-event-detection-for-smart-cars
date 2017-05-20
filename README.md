@@ -46,7 +46,7 @@ Since this is a repository that references DCASE2017-baseline-system as a submod
 
 git clone --recurse <repo link>
 
-##### Running Instructions for Task4 Baseline
+#### Running Instructions for Task4 Baseline
 
 Please follow the following steps to get the baseline results:
 
