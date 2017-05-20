@@ -44,6 +44,21 @@ Since this is a repository that references DCASE2017-baseline-system as a submod
 
 git clone --recurse <repo link>
 
+Running the Baseline for Task4
+
+Please follow the following steps to get the baseline results:
+
+	1. Go to DCASE2017-baseline-system (cd DCASE2017-baseline-system)
+	2. Run pip install -r requirements.txt
+	3. Go back to root (cd ..)
+	4. Run python task4.py
+
+The above will be using task.defaults.yaml for the baseline run.
+
+If you would like to run your own modifications on top of DCASE baseline system, pls refer to the following links:
+	1. Basic Usage: https://tut-arg.github.io/DCASE2017-baseline-system/usage_tutorial.html#basic-usage
+	2. Extending the framework: https://tt-arg.github.io/DCASE2017-baseline-system/extending_framework.html
+
 Features
 
 1. Downloads the audio from the videos for the testing set first and then for the training set. - Multiprocessing - ensures three files are downloaded simultaneously to reduce the heavy download time to 40 percent as compared with single threaded performance.  
