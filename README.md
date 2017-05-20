@@ -59,7 +59,7 @@ Lists
 
 Download audio: testing_set.csv, training_set.csv
 Groundtruth weak labels: groundtruth_weak_label_testing_set.csv groundtruth_weak_label_training_set.csv
-Groundtruth strong labels: groundtruth_strong_label_testing_set.csv groundtruth_strong_label_training_set.csv
+Groundtruth strong labels: groundtruth_strong_label_testing_set.cv
 
 Usage
 
