@@ -21,7 +21,7 @@ sets:
       hop_length_seconds: 0.02
     learner:
       method: mlp
-      file_hop: 50
+      file_hop: 1
 
     learner_method_parameters:
       mlp:

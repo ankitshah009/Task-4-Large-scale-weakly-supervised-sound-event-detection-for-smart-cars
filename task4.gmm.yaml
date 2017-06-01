@@ -18,7 +18,7 @@ sets:
       enable: false
     learner:
       method: gmm
-      file_hop: 50
+      file_hop: 1
     learner_method_parameters:
       gmm:
         n_components: 1
