@@ -121,7 +121,7 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 #### 3. Strong Label's annotations for Testing
 -------------------------------------------------
 
-1. Only one person was involved in the annotation of each 10-sec clip. 
+1. Only one person was involved in the annotation of each 10-sec clip and all the clips were randomly divided and assigned to 5 people. 
 2. The sound event annotations were based on the audio and not the video.
 3. The strong labels correspond to the file: groundtruth_strong_label_testing_set.csv
 4. The format of strong labels is the same as the DCASE format (Task 3 and Task 4: Audio tagging).
