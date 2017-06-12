@@ -31,7 +31,7 @@ class FileFormat(object):
 			#	print str(key) + ":" + str(self.labelsDict[key])
 
 		except Exception as ex:
-			print "Fileformat of the file " + str(self.filepath) + " is invalid."
+			print("Fileformat of the file " + str(self.filepath) + " is invalid.")
 			raise ex
 
 	def validatePredictedDS(self, predictedDS):
