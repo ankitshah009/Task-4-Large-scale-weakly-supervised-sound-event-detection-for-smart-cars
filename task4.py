@@ -6,6 +6,7 @@
 from __future__ import print_function, absolute_import
 import sys
 import os
+
 # Add one directory higher in case we are under examples folder
 sys.path.append(os.path.split(os.path.dirname(os.path.realpath(__file__)))[0])
 
@@ -32,6 +33,7 @@ from dcase_framework.containers import DottedDict
 from dcase_framework.files import ParameterFile
 
 from Models import *
+
 __version_info__ = ('1', '0', '0')
 __version__ = '.'.join(__version_info__)
 
@@ -63,21 +65,24 @@ class CustomAppCore(SoundEventAppCore):
             return '  No reference data available for dataset.'
         else:
             output = ''
-            if self.params.get_path('evaluator.scene_handling') == 'scene-dependent':
+            if self.params.get_path(
+                    'evaluator.scene_handling') == 'scene-dependent':
                 tagging_overall_metrics_per_scene = {}
                 event_overall_metrics_per_scene = {}
-                for scene_id, scene_label in enumerate(self.dataset.scene_labels):
+                for scene_id, scene_label in enumerate(
+                        self.dataset.scene_labels):
                     if scene_label not in event_overall_metrics_per_scene:
                         event_overall_metrics_per_scene[scene_label] = {}
 
                     segment_based_metric = sed_eval.sound_event.SegmentBasedMetrics(
-                        event_label_list=self.dataset.event_labels(scene_label=scene_label),
+                        event_label_list=self.dataset.event_labels(
+                            scene_label=scene_label),
                         time_resolution=1.0,
                     )
 
-
                     event_based_metric = sed_eval.sound_event.EventBasedMetrics(
-                        event_label_list=self.dataset.event_labels(scene_label=scene_label),
+                        event_label_list=self.dataset.event_labels(
+                            scene_label=scene_label),
                         evaluate_onset=True,
                         evaluate_offset=False,
                         t_collar=0.5,
@@ -87,55 +92,67 @@ class CustomAppCore(SoundEventAppCore):
                     for fold in self._get_active_folds():
                         result_filename = self._get_result_filename(fold=fold,
                                                                     scene_label=scene_label,
-                                                                    path=self.params.get_path('path.recognizer'))
+                                                                    path=self.params.get_path(
+                                                                        'path.recognizer'))
 
-                        results = MetaDataContainer().load(filename=result_filename)
+                        results = MetaDataContainer().load(
+                            filename=result_filename)
 
-                        for file_id, audio_filename in enumerate(self.dataset.test(fold, scene_label=scene_label).file_list):
+                        for file_id, audio_filename in enumerate(
+                                self.dataset.test(fold,
+                                                  scene_label=scene_label).file_list):
                             # Subtask A (audio tagging)
 
                             # Subtask B (sound event detection)
                             # Select only row which are from current file and contains only detected event
                             current_file_results = []
                             for result_item in results.filter(
-                                    filename=posix_path(self.dataset.absolute_to_relative(audio_filename))
+                                    filename=posix_path(
+                                        self.dataset.absolute_to_relative(
+                                            audio_filename))
                             ):
                                 if 'event_label' in result_item and result_item.event_label:
                                     current_file_results.append(result_item)
 
-
                             meta = []
-                            
+
                             for meta_item in self.dataset.file_meta(
-                                    filename=posix_path(self.dataset.absolute_to_relative(audio_filename))
+                                    filename=posix_path(
+                                        self.dataset.absolute_to_relative(
+                                            audio_filename))
                             ):
                                 if 'event_label' in meta_item and meta_item.event_label:
                                     meta.append(meta_item)
 
+                            for item in meta:
+                                # print ("Actual")
+                                # print (item)
+                                item = str(item)
+                                item1 = item.split('|')[0].split('audio/')[
+                                    1].lstrip()
+                                item2 = item.split('|')[2].lstrip()
+                                item3 = item.split('|')[3].lstrip()
+                                item4 = item.split('|')[4].lstrip()
+                                with open('groundtruth.txt', 'a') as file1:
+                                    file1.write(str(item1) + str("\t") + str(
+                                        item2) + str("\t") + str(item3) + str(
+                                        "\t") + str(item4) + str('\n'))
+                                file1.close()
 
-			    for item in meta:
-			    	#print ("Actual")
-			    	#print (item)
-			    	item = str(item)
-			    	item1 = item.split('|')[0].split('audio/')[1].lstrip()
-				item2 = item.split('|')[2].lstrip()
-				item3 = item.split('|')[3].lstrip()
-				item4 = item.split('|')[4].lstrip()
-			    	with open('groundtruth.txt','a') as file1:
-					file1.write(str(item1) + str("\t") +str(item2) + str("\t") + str(item3) + str("\t") +  str(item4) + str('\n'))
-				file1.close()
-
-			    for item in current_file_results:
-			    	#print ("Predicted")
-				#print (item)
-			   	item = str(item)
-				item1 = item.split('|')[0].split('audio/')[1].lstrip()
-				item2 = item.split('|')[2].lstrip()
-				item3 = item.split('|')[3].lstrip()
-				item4 = item.split('|')[4].lstrip()
-				with open('prediction.txt','a') as file2:
-					file2.write(str(item1) + str("\t") + str(item2) + str("\t") + str(item3) + str("\t") + str(item4) + str('\n'))
-				file2.close()
+                            for item in current_file_results:
+                                # print ("Predicted")
+                                # print (item)
+                                item = str(item)
+                                item1 = item.split('|')[0].split('audio/')[
+                                    1].lstrip()
+                                item2 = item.split('|')[2].lstrip()
+                                item3 = item.split('|')[3].lstrip()
+                                item4 = item.split('|')[4].lstrip()
+                                with open('prediction.txt', 'a') as file2:
+                                    file2.write(str(item1) + str("\t") + str(
+                                        item2) + str("\t") + str(item3) + str(
+                                        "\t") + str(item4) + str('\n'))
+                                file2.close()
 
                             segment_based_metric.evaluate(
                                 reference_event_list=meta,
@@ -147,11 +164,13 @@ class CustomAppCore(SoundEventAppCore):
                                 estimated_event_list=current_file_results
                             )
 
-                    #from IPython import embed
-                    #embed()
+                    # from IPython import embed
+                    # embed()
 
-                    event_overall_metrics_per_scene[scene_label]['segment_based_metrics'] = segment_based_metric.results()
-                    event_overall_metrics_per_scene[scene_label]['event_based_metrics'] = event_based_metric.results()
+                    event_overall_metrics_per_scene[scene_label][
+                        'segment_based_metrics'] = segment_based_metric.results()
+                    event_overall_metrics_per_scene[scene_label][
+                        'event_based_metrics'] = event_based_metric.results()
                     if self.params.get_path('evaluator.show_details', False):
                         output += "  Scene [{scene}], Evaluation over {folds:d} folds\n".format(
                             scene=scene_label,
@@ -161,19 +180,19 @@ class CustomAppCore(SoundEventAppCore):
                         output += " \n"
                         output += segment_based_metric.result_report_overall()
                         output += segment_based_metric.result_report_class_wise()
-                event_overall_metrics_per_scene = DottedDict(event_overall_metrics_per_scene)
+                event_overall_metrics_per_scene = DottedDict(
+                    event_overall_metrics_per_scene)
 
                 output += " \n"
                 output += "  Subtask A (tagging): Overall metrics \n"
                 output += "  =============== \n"
-		
 
                 # Insert audio tagging evaluation results here
-		GroundTruthDS = FileFormat('groundtruth.txt')
-		PredictedDS = FileFormat('prediction.txt')
+                GroundTruthDS = FileFormat('groundtruth.txt')
+                PredictedDS = FileFormat('prediction.txt')
 
-		output += GroundTruthDS.computeMetricsString(PredictedDS)
-		
+                output += GroundTruthDS.computeMetricsString(PredictedDS)
+
                 output += " \n"
                 output += "  Subtask B (event detection): Overall metrics \n"
                 output += "  =============== \n"
@@ -197,19 +216,36 @@ class CustomAppCore(SoundEventAppCore):
                     'event_based_fscore': [],
                     'event_based_er': [],
                 }
-                for scene_id, scene_label in enumerate(self.dataset.scene_labels):
+                for scene_id, scene_label in enumerate(
+                        self.dataset.scene_labels):
                     output += "    {scene_label:<17s} | {segment_based_fscore:<7s} | {segment_based_er:<7s} | {event_based_fscore:<7s} | {event_based_er:<7s} | \n".format(
                         scene_label=scene_label,
-                        segment_based_fscore="{:4.2f}".format(event_overall_metrics_per_scene.get_path(scene_label + '.segment_based_metrics.overall.f_measure.f_measure') * 100),
-                        segment_based_er="{:4.2f}".format(event_overall_metrics_per_scene.get_path(scene_label + '.segment_based_metrics.overall.error_rate.error_rate')),
-                        event_based_fscore="{:4.2f}".format(event_overall_metrics_per_scene.get_path(scene_label + '.event_based_metrics.overall.f_measure.f_measure') * 100),
-                        event_based_er="{:4.2f}".format(event_overall_metrics_per_scene.get_path(scene_label + '.event_based_metrics.overall.error_rate.error_rate')),
+                        segment_based_fscore="{:4.2f}".format(
+                            event_overall_metrics_per_scene.get_path(
+                                scene_label + '.segment_based_metrics.overall.f_measure.f_measure') * 100),
+                        segment_based_er="{:4.2f}".format(
+                            event_overall_metrics_per_scene.get_path(
+                                scene_label + '.segment_based_metrics.overall.error_rate.error_rate')),
+                        event_based_fscore="{:4.2f}".format(
+                            event_overall_metrics_per_scene.get_path(
+                                scene_label + '.event_based_metrics.overall.f_measure.f_measure') * 100),
+                        event_based_er="{:4.2f}".format(
+                            event_overall_metrics_per_scene.get_path(
+                                scene_label + '.event_based_metrics.overall.error_rate.error_rate')),
                     )
 
-                    avg['segment_based_fscore'].append(event_overall_metrics_per_scene.get_path(scene_label + '.segment_based_metrics.overall.f_measure.f_measure') * 100)
-                    avg['segment_based_er'].append(event_overall_metrics_per_scene.get_path(scene_label + '.segment_based_metrics.overall.error_rate.error_rate'))
-                    avg['event_based_fscore'].append(event_overall_metrics_per_scene.get_path(scene_label + '.event_based_metrics.overall.f_measure.f_measure') * 100)
-                    avg['event_based_er'].append(event_overall_metrics_per_scene.get_path(scene_label + '.event_based_metrics.overall.error_rate.error_rate'))
+                    avg['segment_based_fscore'].append(
+                        event_overall_metrics_per_scene.get_path(
+                            scene_label + '.segment_based_metrics.overall.f_measure.f_measure') * 100)
+                    avg['segment_based_er'].append(
+                        event_overall_metrics_per_scene.get_path(
+                            scene_label + '.segment_based_metrics.overall.error_rate.error_rate'))
+                    avg['event_based_fscore'].append(
+                        event_overall_metrics_per_scene.get_path(
+                            scene_label + '.event_based_metrics.overall.f_measure.f_measure') * 100)
+                    avg['event_based_er'].append(
+                        event_overall_metrics_per_scene.get_path(
+                            scene_label + '.event_based_metrics.overall.error_rate.error_rate'))
 
                 output += "    {scene_label:<17s} + {segment_based_fscore:7s} + {segment_based_er:7s} + {event_based_fscore:7s} + {event_based_er:7s} + \n".format(
                     scene_label='-' * 17,
@@ -220,13 +256,18 @@ class CustomAppCore(SoundEventAppCore):
                 )
                 output += "    {scene_label:<17s} | {segment_based_fscore:<7s} | {segment_based_er:<7s} | {event_based_fscore:<7s} | {event_based_er:<7s} | \n".format(
                     scene_label='Average',
-                    segment_based_fscore="{:4.2f}".format(numpy.mean(avg['segment_based_fscore'])),
-                    segment_based_er="{:4.2f}".format(numpy.mean(avg['segment_based_er'])),
-                    event_based_fscore="{:4.2f}".format(numpy.mean(avg['event_based_fscore'])),
-                    event_based_er="{:4.2f}".format(numpy.mean(avg['event_based_er'])),
+                    segment_based_fscore="{:4.2f}".format(
+                        numpy.mean(avg['segment_based_fscore'])),
+                    segment_based_er="{:4.2f}".format(
+                        numpy.mean(avg['segment_based_er'])),
+                    event_based_fscore="{:4.2f}".format(
+                        numpy.mean(avg['event_based_fscore'])),
+                    event_based_er="{:4.2f}".format(
+                        numpy.mean(avg['event_based_er'])),
                 )
 
-            elif self.params.get_path('evaluator.scene_handling') == 'scene-independent':
+            elif self.params.get_path(
+                    'evaluator.scene_handling') == 'scene-independent':
                 message = '{name}: Scene handling mode not implemented yet [{mode}]'.format(
                     name=self.__class__.__name__,
                     mode=self.params.get_path('evaluator.scene_handling')
@@ -245,30 +286,35 @@ class CustomAppCore(SoundEventAppCore):
                 raise ValueError(message)
 
             if self.params.get_path('evaluator.saving.enable'):
-                filename = self.params.get_path('evaluator.saving.filename').format(
+                filename = self.params.get_path(
+                    'evaluator.saving.filename').format(
                     dataset_name=self.dataset.storage_name,
                     parameter_set=self.params['active_set'],
                     parameter_hash=self.params['_hash']
                 )
 
-                output_file = os.path.join(self.params.get_path('path.evaluator'), filename)
+                output_file = os.path.join(
+                    self.params.get_path('path.evaluator'), filename)
 
                 output_data = {
                     'overall_metrics_per_scene': event_overall_metrics_per_scene,
                     'average': {
-                        'segment_based_fscore': numpy.mean(avg['segment_based_fscore']),
+                        'segment_based_fscore': numpy.mean(
+                            avg['segment_based_fscore']),
                         'segment_based_er': numpy.mean(avg['segment_based_er']),
-                        'event_based_fscore': numpy.mean(avg['event_based_fscore']),
+                        'event_based_fscore': numpy.mean(
+                            avg['event_based_fscore']),
                         'event_based_er': numpy.mean(avg['event_based_er']),
                     },
                     'parameters': dict(self.params)
                 }
                 ParameterFile(output_data, filename=output_file).save()
 
-	    with open("TaskB_metrics","w") as file1:
-	    	file1.write(output)
-	    file1.close()
+            with open("TaskB_metrics", "w") as file1:
+                file1.write(output)
+            file1.close()
             return output
+
 
 def main(argv):
     numpy.random.seed(123456)  # let's make randomization predictable
@@ -347,14 +393,16 @@ def main(argv):
                         action='store_true',
                         required=False)
 
-    parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + __version__)
+    parser.add_argument('-v', '--version', action='version',
+                        version='%(prog)s ' + __version__)
 
     # Parse arguments
     args = parser.parse_args()
 
     # Load default parameters from a file
-    default_parameters_filename = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                                               os.path.splitext(os.path.basename(__file__))[0]+'.defaults.yaml')
+    default_parameters_filename = os.path.join(
+        os.path.dirname(os.path.realpath(__file__)),
+        os.path.splitext(os.path.basename(__file__))[0] + '.defaults.yaml')
     if args.parameter_set:
         parameters_sets = args.parameter_set.split(',')
     else:
@@ -362,7 +410,8 @@ def main(argv):
 
     for parameter_set in parameters_sets:
         # Initialize ParameterContainer
-        params = ParameterContainer(project_base=os.path.dirname(os.path.realpath(__file__)))
+        params = ParameterContainer(
+            project_base=os.path.dirname(os.path.realpath(__file__)))
 
         # Load default parameters from a file
         params.load(filename=default_parameters_filename)
@@ -408,15 +457,18 @@ def main(argv):
         # Setup logging
         setup_logging(parameter_container=params['logging'])
 
-        app = CustomAppCore(name='DCASE 2017::Acoustic Scene Classification / Baseline System',
-                            params=params,
-                            system_desc=params.get('description'),
-                            system_parameter_set_id=params.get('active_set'),
-                            setup_label='Development setup',
-                            log_system_progress=params.get_path('general.log_system_progress'),
-                            show_progress_in_console=params.get_path('general.print_system_progress'),
-                            use_ascii_progress_bar=params.get_path('general.use_ascii_progress_bar')
-                            )
+        app = CustomAppCore(
+            name='DCASE 2017::Acoustic Scene Classification / Baseline System',
+            params=params,
+            system_desc=params.get('description'),
+            system_parameter_set_id=params.get('active_set'),
+            setup_label='Development setup',
+            log_system_progress=params.get_path('general.log_system_progress'),
+            show_progress_in_console=params.get_path(
+                'general.print_system_progress'),
+            use_ascii_progress_bar=params.get_path(
+                'general.use_ascii_progress_bar')
+            )
 
         # Show parameter set list and exit
         if args.show_set_list:
@@ -438,7 +490,8 @@ def main(argv):
             return
 
         # Show system parameters
-        if params.get_path('general.log_system_parameters') or args.show_parameters:
+        if params.get_path(
+                'general.log_system_parameters') or args.show_parameters:
             app.show_parameters()
 
         # Show evaluated systems
@@ -489,17 +542,22 @@ def main(argv):
 
             if params['general']['challenge_submission_mode']:
                 # If in submission mode, save results in separate folder for easier access
-                params['path']['recognizer'] = params.get_path('path.recognizer_challenge_output')
+                params['path']['recognizer'] = params.get_path(
+                    'path.recognizer_challenge_output')
 
-            challenge_app = CustomAppCore(name='DCASE 2017::Acoustic Scene Classification / Baseline System',
-                                          params=params,
-                                          system_desc=params.get('description'),
-                                          system_parameter_set_id=params.get('active_set'),
-                                          setup_label='Evaluation setup',
-                                          log_system_progress=params.get_path('general.log_system_progress'),
-                                          show_progress_in_console=params.get_path('general.print_system_progress'),
-                                          use_ascii_progress_bar=params.get_path('general.use_ascii_progress_bar')
-                                          )
+            challenge_app = CustomAppCore(
+                name='DCASE 2017::Acoustic Scene Classification / Baseline System',
+                params=params,
+                system_desc=params.get('description'),
+                system_parameter_set_id=params.get('active_set'),
+                setup_label='Evaluation setup',
+                log_system_progress=params.get_path(
+                    'general.log_system_progress'),
+                show_progress_in_console=params.get_path(
+                    'general.print_system_progress'),
+                use_ascii_progress_bar=params.get_path(
+                    'general.use_ascii_progress_bar')
+                )
             # Initialize application
             if params['flow']['initialize']:
                 challenge_app.initialize()
@@ -517,7 +575,9 @@ def main(argv):
 
                 if params['general']['challenge_submission_mode']:
                     challenge_app.ui.line(" ")
-                    challenge_app.ui.line("Results for the challenge are stored at ["+params.get_path('path.recognizer_challenge_output')+"]")
+                    challenge_app.ui.line(
+                        "Results for the challenge are stored at [" + params.get_path(
+                            'path.recognizer_challenge_output') + "]")
                     challenge_app.ui.line(" ")
 
             # System evaluation if not in challenge submission mode
@@ -525,6 +585,7 @@ def main(argv):
                 challenge_app.system_evaluation()
 
     return 0
+
 
 if __name__ == "__main__":
     try:
