@@ -36,7 +36,7 @@ def download_audio_method(line,csv_file):
 	end_seconds = line.split(",")[2];
 	audio_duration = float(end_seconds) - float(start_seconds)
 	#positive_labels = ','.join(line.split(",")[3:]);
-	print "Query -> " + query_id
+	print("Query -> " + query_id)
 	#print "start_time -> " + start_seconds
 	#print "end_time -> " + end_seconds
 	#print "positive_labels -> " + positive_labels
@@ -74,7 +74,7 @@ def download_audio_method(line,csv_file):
 		ex1 = ""
 	except Exception as ex:
 		ex1 = str(ex) + ',' + str(query_id)
-		print "Error is ---> " + str(ex)
+		print("Error is ---> " + str(ex))
 	return ex1
 
 #Download audio - Reads 3 lines of input csv file at a time and passes them to multi_run wrapper which calls download_audio_method to download the file based on id.
@@ -92,13 +92,13 @@ def download_audio(csv_file,timestamp):
 					next_line = (next_line,csv_file)
 					lines_list.append(next_line)
 				except:
-					print "end of file"
+					print("end of file")
 				try:
 					next_line = segments_info_file.next()
 					next_line = (next_line,csv_file)
 					lines_list.append(next_line)
 				except:
-					print "end of file"
+					print("end of file")
 				#print lines_list
 				P = multiprocessing.Pool(3)
 
@@ -112,7 +112,7 @@ def download_audio(csv_file,timestamp):
 
 if __name__ == "__main__":
 	if len(sys.argv) !=2:
-		print 'takes arg1 as csv file to downloaded'
+		print('takes arg1 as csv file to downloaded')
 	else:
 		
 		ts = time.time()
