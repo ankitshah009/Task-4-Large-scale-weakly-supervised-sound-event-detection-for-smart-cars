@@ -32,7 +32,7 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 -------------------------------------------------
 
 #### Prerequisite installations
-
+[Current version of our scripts require python 2.7 version installation - If user has other python revision installed, we encourage them to setup a virtualenvironment for the DCASE Challenge until the scripts support python 3 as well] 
 1. youtube-dl - [sudo] pip install --upgrade youtube_dl
 2. pafy -  [sudo] pip install pafy
 3. tqdm (progress bar) -  [sudo] pip install tqdm
