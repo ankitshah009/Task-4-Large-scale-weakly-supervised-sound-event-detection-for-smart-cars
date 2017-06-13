@@ -65,7 +65,7 @@ If you would like to run your own modifications on top of DCASE baseline system,
 
 1. Downloads the audio from the videos for the testing set first and then for the training set. - Multiprocessing - ensures three files are downloaded simultaneously to reduce the heavy download time to 40 percent as compared with single threaded performance.  
 2. Formats the audio with consistent parameters - currently set as 1 channel, 16 bit precision, 44.1kHz sampling rate. 
-3. Extracts the 10-sec segments from the formatted audio according to the start and end times.  
+3. Extracts the 10-sec clips from the formatted audio according to the start and end times.  
 4. The script output includes the audio for 1,2 and 3, unless testing script is modified to remove audio from 2 and/or 3, that is the original audio and the formatted audio. 
 5. To denote a unique identifier for every run/launch of downloading files - script stores the timestamp and assigns to each of the output files and folder names.  
 6. Please, contact Ankit/Benjamin in case one or more videos are not properly downloaded or available, or with any other issue. Participants can create their own scripts to download the audio. Please ensure that you have all the 10-sec clip in the lists.
