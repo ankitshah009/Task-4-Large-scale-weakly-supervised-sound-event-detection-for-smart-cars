@@ -101,10 +101,13 @@ Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg
 
 #### Number of Audio id count files 
 
-1. testing_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the testing set.
-Total testing set files - 488
-2. training_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the training set.
-Total training set files - 51172
+1. testing_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the testing set
+
+Total testing set downloaded files - 488
+
+2. training_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the training set
+
+Total training set downloaded files - 51172
 
 -------------------------------------------------
 
