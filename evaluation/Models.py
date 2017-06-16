@@ -151,7 +151,7 @@ class FileFormat(object):
 		Metric_File.close()
 
 	
-	def computeMetricsString(self, predictedDS, output_filepath):
+	def computeMetricsString(self, predictedDS):
 		TP = 0
 		FP = 0
 		FN = 0
@@ -237,9 +237,7 @@ class FileFormat(object):
 			if(precision + recall != 0.0):
 				f1 = 2*precision*recall / float(precision + recall)
 
-			with open(output_filepath, "a") as Metric_File:
-				Metric_File.write("Class = " + str(classLabel) + ", Precision = " + str(precision) + ", Recall = " + str(recall) + ", F1 Score = " + str(f1) + "\n")
-			Metric_File.close()
+			output += "Class = " + str(classLabel) + ", Precision = " + str(precision) + ", Recall = " + str(recall) + ", F1 Score = " + str(f1) + "\n"
 		
 		output += "\n\nComplete Metrics\n\n"
 		output += "Precision = " + str(Precision*100.0) + "\n"
@@ -248,4 +246,6 @@ class FileFormat(object):
 		output += "Number of Audio Files = " + str(len(self.labelsDict.keys()))
 		
 		return output
+
+
 
