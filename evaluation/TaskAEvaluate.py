@@ -7,16 +7,19 @@ def evaluateMetrics(groundtruth_filepath, predicted_filepath, output_filepath):
 	#Load GroundTruth to memory, indexed by 
 	groundTruthDS = FileFormat(groundtruth_filepath)
 	preditedDS = FileFormat(predicted_filepath)
-
+	output = groundTruthDS.computeMetrics(preditedDS,output_filepath)
+	
+	print len(groundTruthDS.labelsDict.keys())
+	print len(preditedDS.labelsDict.keys())
 	#simple audioFileCheck
-	if len(groundTruthDS.labelsDict.keys()) != len(preditedDS.labelsDict.keys()):
-		print "The prediction file submitted does not have prediction for all the audio files"
-		sys.exit(1)
+	#if len(groundTruthDS.labelsDict.keys()) != len(preditedDS.labelsDict.keys()):
+	#	print "The prediction file submitted does not have prediction for all the audio files"
+	#	sys.exit(1)
 
 	#complex check for audioFile
-	if not groundTruthDS.validatePredictedDS(preditedDS):
-		print "The prediction file submitted does not have prediction for all the audio files"
-		sys.exit(1)
+	#if not groundTruthDS.validatePredictedDS(preditedDS):
+	#	print "The prediction file submitted does not have prediction for all the audio files"
+	#	sys.exit(1)
 
 	#the submission is valid. Compute Metrics and Push to File
 	groundTruthDS.computeMetrics(preditedDS, output_filepath)
