@@ -1,7 +1,8 @@
+
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
-Coming soon: Baseline performance. Baseline system will be based on Task 3's system.
-Last update Apr2: Added strong labels.
+Last update  May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
+Update Apr2: Added strong labels.
 Update Apr1: Added evaluation folder. 
 
 ## Coordinators
@@ -30,21 +31,22 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 1. Script to download the development data for Task 4
 -------------------------------------------------
 
-Prerequisite installations
+###Prerequisite installations
 
 1. youtube-dl - [sudo] pip install --upgrade youtube_dl
 2. pafy -  [sudo] pip install pafy
 3. tqdm (progress bar) -  [sudo] pip install tqdm
 4. multiprocessing - [sudo] pip install multiprocessing
 5. sox tool - sudo apt-get install sox
+6. ffmpeg - sudo apt-get install ffmpeg 
 
-Cloning this repository
+###Cloning this repository
 
 Since this is a repository that references DCASE2017-baseline-system as a submodule, you should use the following command to clone this repository completely:
 
 git clone --recurse <repo link>
 
-Running the Baseline for Task4
+###Running Instructions for Task4 Baseline
 
 Please follow the following steps to get the baseline results:
 
@@ -57,9 +59,9 @@ The above will be using task.defaults.yaml for the baseline run.
 
 If you would like to run your own modifications on top of DCASE baseline system, pls refer to the following links:
 	1. Basic Usage: https://tut-arg.github.io/DCASE2017-baseline-system/usage_tutorial.html#basic-usage
-	2. Extending the framework: https://tt-arg.github.io/DCASE2017-baseline-system/extending_framework.html
-
-Features
+	2. Extending the framework: https://tut-arg.github.io/DCASE2017-baseline-system/extending_framework.html
+  
+##Features
 
 1. Downloads the audio from the videos for the testing set first and then for the training set. - Multiprocessing - ensures three files are downloaded simultaneously to reduce the heavy download time to 40 percent as compared with single threaded performance.  
 2. Formats the audio with consistent parameters - currently set as 1 channel, 16 bit precision, 44.1kHz sampling rate. 
@@ -68,23 +70,25 @@ Features
 5. To denote a unique identifier for every run/launch of downloading files - script stores the timestamp and assigns to each of the output files and folder names.  
 6. Please, contact Ankit/Benjamin in case one or more videos are not properly downloaded or available, or with any other issue. Participants can create their own scripts to download the audio. Please ensure that you have all the 10-sec clip in the lists.
 
-Lists
+###Lists
 
 Download audio: testing_set.csv, training_set.csv
-Groundtruth weak labels: groundtruth_weak_label_testing_set.csv groundtruth_weak_label_training_set.csv
-Groundtruth strong labels: groundtruth_strong_label_testing_set.csv groundtruth_strong_label_training_set.csv
 
-Usage
+Groundtruth weak labels: groundtruth_weak_label_testing_set.csv groundtruth_weak_label_training_set.csv
+
+Groundtruth strong labels: groundtruth_strong_label_testing_set.cv
+
+###Usage
 
 $python download_audio.py  <CSV filename - relative path is also fine>
 Sample Usage -  python download_audio.py training_set.csv 
 
-User Modifiable Parameters and Options 
+###User Modifiable Parameters and Options 
 
 1. Audio formatting can be modified in the "format_audio" method defined in the script download_youtube_audio_from_csv_and_delete_original.py
 2. Removal of original audio and/or formatted audio paths can be done by uncommenting and modifying <os.system(cmdstring2)> in "download_audio_method" function defined in download_audio.py
 
-Output
+###Output
 
 1. First folder contains original best audio from youtube: 
 <csv_name>_<testing/training>_<timestamp>_audio_downloaded 
@@ -95,7 +99,7 @@ Output
 
 Note:- To each downloaded audio string "Y" is added as tools like sox and ffmpeg causes problem when filename starts with "--" or "-". 
 
-Number of Audio id count files 
+###Number of Audio id count files 
 
 1. testing_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the testing set
 2. training_set_num_files_per_class.csv - For each class - specifies number of audio segments present in the training set
@@ -106,7 +110,7 @@ Number of Audio id count files
 2. Script to evaluate Task 4 - Subtask A (Audio tagging)
 -------------------------------------------------
 
-Usage
+###Usage
 
 $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
 
