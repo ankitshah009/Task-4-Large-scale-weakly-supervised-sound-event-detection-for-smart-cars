@@ -1,7 +1,8 @@
 
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
-Last update June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
+Last update June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
+June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
 May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
 Update Apr2: Added strong labels.
 Update Apr1: Added evaluation folder. 
