@@ -220,9 +220,15 @@ class FileFormat(object):
 			F1 = 0.0
 
 		output = ""
-		output += "\n\nClassWise Metrics\n\n"
+		output += "\n\nClass-based Metrics\n\n"
 
+		classWisePrecision = 0.0
+		classWiseRecall = 0.0
+		classWiseF1 = 0.0
+		classCount = 0
 		for classLabel in classWiseMetrics.keys():
+			classCount += 1
+
 			precision = 0.0
 			recall = 0.0
 			f1 = 0.0
@@ -232,19 +238,31 @@ class FileFormat(object):
 			fn = classWiseMetrics[classLabel][2]
 			if(tp + fp != 0):
 				precision = float(tp) / float(tp + fp)
+				classWisePrecision += precision
 			if(tp + fn != 0):
 				recall = float(tp) / float(tp + fn)
+				classWiseRecall += recall
 			if(precision + recall != 0.0):
 				f1 = 2*precision*recall / float(precision + recall)
 
-			output += "Class = " + str(classLabel) + ", Precision = " + str(precision) + ", Recall = " + str(recall) + ", F1 Score = " + str(f1) + "\n"
+			output += "\tClass = " + str(classLabel.split("\n")[0]) + ", Precision = " + str(precision) + ", Recall = " + str(recall) + ", F1 Score = " + str(f1) + "\n"
 		
-		output += "\n\nComplete Metrics\n\n"
-		output += "Precision = " + str(Precision*100.0) + "\n"
-		output += "Recall = " + str(Recall*100.0) + "\n"
-		output += "F1 Score = " + str(F1*100.0) + "\n"
-		output += "Number of Audio Files = " + str(len(self.labelsDict.keys()))
+		classWisePrecision = classWisePrecision / classCount
+		classWiseRecall = classWiseRecall / classCount
+		classWiseF1 = 2*classWisePrecision*classWiseRecall / float(classWisePrecision + classWiseRecall)
+
+		output += "\n\n\tComplete Metrics (Computed Class Wise Average)\n\n"
+		output += "\tPrecision = " + str(classWisePrecision*100.0) + "\n"
+		output += "\tRecall = " + str(classWiseRecall*100.0) + "\n"
+		output += "\tF1 Score = " + str(classWiseF1*100.0) + "\n"
+		output += "\tNumber of Audio Files = " + str(len(self.labelsDict.keys())) + "\n\n"
 		
+		output += "\n\n\tComplete Metrics (Computed Instance Wise) - These metrics will be used for system evaluation.\n\n"
+		output += "\tPrecision = " + str(Precision*100.0) + "\n"
+		output += "\tRecall = " + str(Recall*100.0) + "\n"
+		output += "\tF1 Score = " + str(F1*100.0) + "\n"
+		output += "\tNumber of Audio Files = " + str(len(self.labelsDict.keys())) + "\n\n"
+				
 		return output
 
 
