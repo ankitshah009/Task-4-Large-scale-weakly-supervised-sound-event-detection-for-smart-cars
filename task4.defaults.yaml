@@ -49,7 +49,7 @@ sets:
           callbacks:
             - type: EarlyStopping
               parameters:
-                monitor: val_categorical_accuracy
+                monitor: categorical_accuracy
                 min_delta: 0.001
                 patience: 10
                 verbose: 0
@@ -83,7 +83,7 @@ sets:
                 kernel_initializer: uniform
                 activation: softmax
 
-          loss: categorical_crossentropy
+          loss: binary_crossentropy
 
           optimizer:
             type: Adam
@@ -406,7 +406,7 @@ defaults:
               kernel_initializer: uniform
               activation: sigmoid
 
-        loss: categorical_crossentropy
+        loss: binary_crossentropy
 
         optimizer:
           type: Adam

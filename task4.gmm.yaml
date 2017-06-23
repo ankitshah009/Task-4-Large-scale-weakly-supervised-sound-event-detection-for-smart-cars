@@ -322,7 +322,7 @@ defaults:
               kernel_initializer: uniform
               activation: sigmoid
 
-        loss: categorical_crossentropy
+        loss: binary_crossentropy
 
         optimizer:
           type: Adam
