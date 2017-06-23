@@ -131,11 +131,11 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 ### Update Log 
 -----------------
 
-*June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
-*June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
-*June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
-*May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
-*April 2: Added strong labels.
-*April 1: Added evaluation folder. 
+* June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
+* June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
+* June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
+* May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
+* April 2: Added strong labels.
+* April 1: Added evaluation folder. 
 
 
