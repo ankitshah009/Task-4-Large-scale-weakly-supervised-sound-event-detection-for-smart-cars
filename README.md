@@ -1,12 +1,6 @@
 
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
-Last update June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
-June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
-May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
-Update Apr2: Added strong labels.
-Update Apr1: Added evaluation folder. 
-
 ## Coordinators
 
 Benjamin Elizalde, Emmanuel Vincent, Bhiksha Raj
@@ -133,3 +127,15 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 3. The strong labels correspond to the file: groundtruth_strong_label_testing_set.csv
 4. The format of strong labels is the same as the DCASE format (Task 3 and Task 4: Audio tagging).
 5. Less than 2% of the 10-sec clips had the presence of a sound according to AudioSet, but didn't seem to contain the sound event. Thus, start and end time were assigned 0.
+
+### Update Log 
+-----------------
+
+* June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
+* June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
+* June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
+* May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
+* April 2: Added strong labels.
+* April 1: Added evaluation folder. 
+
+
