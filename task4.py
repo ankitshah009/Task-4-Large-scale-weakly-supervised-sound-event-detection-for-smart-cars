@@ -162,17 +162,6 @@ class CustomAppCore(SoundEventAppCore):
                         output += segment_based_metric.result_report_overall()
                         output += segment_based_metric.result_report_class_wise()
                 event_overall_metrics_per_scene = DottedDict(event_overall_metrics_per_scene)
-
-                output += " \n"
-                output += "  Subtask A (tagging): Overall metrics \n"
-                output += "  =============== \n"
-		
-
-                # Insert audio tagging evaluation results here
-		GroundTruthDS = FileFormat('groundtruth.txt')
-		PredictedDS = FileFormat('prediction.txt')
-
-		output += GroundTruthDS.computeMetricsString(PredictedDS)
 		
                 output += " \n"
                 output += "  Subtask B (event detection): Overall metrics \n"
@@ -225,6 +214,17 @@ class CustomAppCore(SoundEventAppCore):
                     event_based_fscore="{:4.2f}".format(numpy.mean(avg['event_based_fscore'])),
                     event_based_er="{:4.2f}".format(numpy.mean(avg['event_based_er'])),
                 )
+
+                output += " \n"
+                output += "  Subtask A (tagging): Overall metrics \n"
+                output += "  =============== \n"
+		
+                # Insert audio tagging evaluation results here
+		GroundTruthDS = FileFormat('groundtruth.txt')
+		PredictedDS = FileFormat('prediction.txt')
+
+		output += GroundTruthDS.computeMetricsString(PredictedDS)
+		output += "\n"
 
             elif self.params.get_path('evaluator.scene_handling') == 'scene-independent':
                 message = '{name}: Scene handling mode not implemented yet [{mode}]'.format(
