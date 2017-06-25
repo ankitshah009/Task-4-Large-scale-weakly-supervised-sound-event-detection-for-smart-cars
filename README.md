@@ -4,6 +4,8 @@
 ### Update Log 
 -----------------
 
+* June 26: Added script to compute duration of audio files. 
+	   Training and testing set duration of audio files for participants to cross check.   
 * June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
 * June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
 * June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
@@ -74,7 +76,7 @@ If you would like to run your own modifications on top of DCASE baseline system,
 3. Extracts the 10-sec clips from the formatted audio according to the start and end times.  
 4. The script output includes the audio for 1,2 and 3, unless testing script is modified to remove audio from 2 and/or 3, that is the original audio and the formatted audio. 
 5. To denote a unique identifier for every run/launch of downloading files - script stores the timestamp and assigns to each of the output files and folder names.  
-6. Please, contact Ankit/Benjamin in case one or more videos are not properly downloaded or available, or with any other issue. Participants can create their own scripts to download the audio. Please ensure that you have all the 10-sec clip in the lists.
+6. Please, contact Ankit/Benjamin in case one or more videos are not properly downloaded or available, or with any other issue. Participants can create their own scripts to download the audio. Please ensure that you have all the 10-sec clip whose duration matches organizer's list. 
 
 #### Lists
 
@@ -82,12 +84,21 @@ Download audio: testing_set.csv, training_set.csv
 
 Groundtruth weak labels: groundtruth_weak_label_testing_set.csv groundtruth_weak_label_training_set.csv
 
-Groundtruth strong labels: groundtruth_strong_label_testing_set.cv
+Groundtruth strong labels: groundtruth_strong_label_testing_set.csv
+
+Training Set Audio Duration: duration_of_files_in_training_set.csv
+
+Testing Set Audio Duration: duration_of_files_in_testing_set.csv
 
 #### Usage
 
 $python download_audio.py  <CSV filename - relative path is also fine>
 Sample Usage -  python download_audio.py training_set.csv 
+
+#### Alternate Audio Download Method. 
+
+* Development Set :- Training - https://goo.gl/rXnXh3. Testing - https://goo.gl/GiCCiX
+* DCASE Forum [https://groups.google.com/forum/#!forum/dcase-discussions] contains password to the download files. 
 
 #### User Modifiable Parameters and Options 
 
@@ -138,6 +149,9 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 4. The format of strong labels is the same as the DCASE format (Task 3 and Task 4: Audio tagging).
 5. Less than 2% of the 10-sec clips had the presence of a sound according to AudioSet, but didn't seem to contain the sound event. Thus, start and end time were assigned 0.
 
+#### 4. Script to compute duration of audio files. 
+--------------------------------------------------
 
+$bash bash_find_duration_of_audio_file.sh <training/testing/evaluation> <Audio Path> <Output Path where duration list will be written>
 
-
+ 
