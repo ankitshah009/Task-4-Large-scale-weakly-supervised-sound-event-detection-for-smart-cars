@@ -4,8 +4,7 @@
 ### Update Log 
 -----------------
 
-* June 26: Added script to compute duration of audio files. 
-	   Training and testing set duration of audio files for participants to cross check.   
+* June 26: Added script to compute duration of audio files. Added Training and testing set duration of audio files as a reference for participants to cross check with. Alternate Method to download audio for Development Set [Training and Testing Set] updated.  
 * June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
 * June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
 * June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
