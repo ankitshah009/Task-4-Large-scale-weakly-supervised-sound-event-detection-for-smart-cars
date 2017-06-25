@@ -152,6 +152,6 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 #### 4. Script to compute duration of audio files. 
 --------------------------------------------------
 
-$bash bash_find_duration_of_audio_file.sh <training/testing/evaluation> <Audio Path> <Output Path where duration list will be written>
+$bash bash_find_duration_of_audio_file.sh <training/testing/evaluation> \<Audio Path\> \<Output Path where duration list will be written\>
 
  
