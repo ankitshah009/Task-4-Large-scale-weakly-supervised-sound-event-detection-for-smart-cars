@@ -16,7 +16,7 @@ class FileFormat(object):
 					audioFile = line.split("\t")[0]
 					startTime = line.split("\t")[1]
 					endTime = line.split("\t")[2]
-					label = line.split("\t")[3].split("\r\n")[0]
+					label = line.split("\t")[3].strip()
 
 					if audioFile not in self.labelsDict.keys():
 						#does not exist
