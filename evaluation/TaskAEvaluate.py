@@ -7,7 +7,7 @@ def evaluateMetrics(groundtruth_filepath, predicted_filepath, output_filepath):
 	#Load GroundTruth to memory, indexed by 
 	groundTruthDS = FileFormat(groundtruth_filepath)
 	preditedDS = FileFormat(predicted_filepath)
-	output = groundTruthDS.computeMetrics(preditedDS,output_filepath)
+	#output = groundTruthDS.computeMetrics(preditedDS,output_filepath)
 	
 	print len(groundTruthDS.labelsDict.keys())
 	print len(preditedDS.labelsDict.keys())
@@ -22,7 +22,10 @@ def evaluateMetrics(groundtruth_filepath, predicted_filepath, output_filepath):
 	#	sys.exit(1)
 
 	#the submission is valid. Compute Metrics and Push to File
-	groundTruthDS.computeMetrics(preditedDS, output_filepath)
+	output = groundTruthDS.computeMetricsString(preditedDS)
+	with open(output_filepath, "w") as filepath:
+		filepath.write(output)
+	filepath.close()
 
 if __name__ == "__main__":
 	if len(sys.argv) != 4:
