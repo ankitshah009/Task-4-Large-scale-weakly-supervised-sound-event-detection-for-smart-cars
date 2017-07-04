@@ -64,7 +64,16 @@ class CustomAppCore(SoundEventAppCore):
         else:
             output = ''
             if self.params.get_path('evaluator.scene_handling') == 'scene-dependent':
-                tagging_overall_metrics_per_scene = {}
+                #reset groundtruth and prediction files
+		with open("groundtruth.txt", "w") as groundtruth_file:
+			groundtruth_file.write("")
+		groundtruth_file.close()
+		
+		with open("prediction.txt", "w") as prediction_file:
+			prediction_file.write("")
+		prediction_file.close()
+
+		tagging_overall_metrics_per_scene = {}
                 event_overall_metrics_per_scene = {}
                 for scene_id, scene_label in enumerate(self.dataset.scene_labels):
                     if scene_label not in event_overall_metrics_per_scene:
@@ -114,10 +123,15 @@ class CustomAppCore(SoundEventAppCore):
 
 
 			    for item in meta:
-			    	#print ("Actual")
-			    	#print (item)
-			    	item = str(item)
-			    	item1 = item.split('|')[0].split('audio/')[1].lstrip()
+			    	#Actual
+				item = str(item)
+
+				item1 = ""
+				if self.setup_label=='Evaluation setup':
+					item1 = item.split('|')[0].lstrip()
+				else:
+					item1 = item.split('|')[0].split('audio/')[1].lstrip()
+
 				item2 = item.split('|')[2].lstrip()
 				item3 = item.split('|')[3].lstrip()
 				item4 = item.split('|')[4].lstrip()
@@ -126,10 +140,13 @@ class CustomAppCore(SoundEventAppCore):
 				file1.close()
 
 			    for item in current_file_results:
-			    	#print ("Predicted")
-				#print (item)
-			   	item = str(item)
-				item1 = item.split('|')[0].split('audio/')[1].lstrip()
+			   	#Predicted
+				item = str(item)
+				item1 = ""
+				if self.setup_label=='Evaluation setup':
+					item1 = item.split('|')[0].lstrip()
+				else:
+					item1 = item.split('|')[0].split('audio/')[1].lstrip()
 				item2 = item.split('|')[2].lstrip()
 				item3 = item.split('|')[3].lstrip()
 				item4 = item.split('|')[4].lstrip()
