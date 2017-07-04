@@ -3,7 +3,7 @@
 
 ### Update Log 
 -----------------
-
+* July 4: [ROHAN BADLANI] Added development as well as challenge support after incorporating latest paramount changes from DCASE Framework repository made by Toni on July 3rd. Integration testing for challenge and development setup done.  
 * June 26: Added script to compute duration of audio files. Added Training and testing set duration of audio files as a reference for participants to cross check with. Alternate Method to download audio for Development Set [Training and Testing Set] updated.  
 * June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
 * June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
@@ -52,15 +52,17 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 Since this is a repository that references DCASE2017-baseline-system as a submodule, you should use the following command to clone this repository completely:
 
 git clone --recurse <repo link>
+git submodule foreach git pull origin master
 
 #### Running Instructions for Task4 Baseline
 
 Please follow the following steps to get the baseline results:
 
-	1. Go to DCASE2017-baseline-system (cd DCASE2017-baseline-system)
-	2. Run pip install -r requirements.txt
-	3. Go back to root (cd ..)
-	4. Run python task4.py
+	1. git submodule foreach git pull origin master
+	2. Go to DCASE2017-baseline-system (cd DCASE2017-baseline-system)
+	3. Run pip install -r requirements.txt
+	4. Go back to root (cd ..)
+	5. Run python task4.py
 
 The above will be using task.defaults.yaml for the baseline run.
 
