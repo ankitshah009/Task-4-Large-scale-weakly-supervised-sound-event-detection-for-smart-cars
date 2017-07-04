@@ -2,7 +2,7 @@ active_set: dcase2017
 
 sets:
   - set_id: dcase2017
-    description: Minimal GMM based system to test that everything works
+    description: Minimal MLP based system to test that everything works
     dataset:
       method: development
     dataset_method_parameters:
@@ -43,7 +43,7 @@ sets:
           validation_amount: 0.10
 
         training:
-          epochs: 2
+          epochs: 200
           batch_size: 256
           shuffle: true
           callbacks:
@@ -138,7 +138,7 @@ defaults:
   general:
     overwrite: false                    # Overwrite previously stored data
 
-    challenge_submission_mode: false    # Save results into path->challenge_results for challenge submission
+    challenge_submission_mode: true    # Save results into path->challenge_results for challenge submission
 
     print_system_progress: true         #
     use_ascii_progress_bar: false       #
