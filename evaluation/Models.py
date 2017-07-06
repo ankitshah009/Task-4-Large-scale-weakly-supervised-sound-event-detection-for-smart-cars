@@ -13,9 +13,9 @@ class FileFormat(object):
 			self.labelsDict = {}
 			with open(self.filepath) as filename:
 				for line in filename:
-					audioFile = line.split("\t")[0]
-					startTime = line.split("\t")[1]
-					endTime = line.split("\t")[2]
+					audioFile = line.split("\t")[0].split(".wav")[0].split(".flac")[0].strip()
+					startTime = line.split("\t")[1].strip()
+					endTime = line.split("\t")[2].strip()
 					label = line.split("\t")[3].strip()
 
 					if audioFile not in self.labelsDict.keys():
@@ -160,50 +160,51 @@ class FileFormat(object):
 
 		#iterate over predicted list
 		for audioFile in predictedDS.labelsDict.keys():
-			markerList = [0]*len(self.labelsDict[audioFile])
-			for predicted_label in predictedDS.labelsDict[audioFile]:
-				#for a predicted label
-				
-				#1. Check if it is present inside groundTruth, if yes push to TP, mark the existance of that groundtruth label
-				index = 0
-				for groundtruth_label in self.labelsDict[audioFile]:
-					if(predicted_label == groundtruth_label):
-						TP += 1
-						markerList[index] = 1
-						break
-					index+=1
+			if(audioFile in self.labelsDict):
+				markerList = [0]*len(self.labelsDict[audioFile])
+				for predicted_label in predictedDS.labelsDict[audioFile]:
+					#for a predicted label
+					
+					#1. Check if it is present inside groundTruth, if yes push to TP, mark the existance of that groundtruth label
+					index = 0
+					for groundtruth_label in self.labelsDict[audioFile]:
+						if(predicted_label == groundtruth_label):
+							TP += 1
+							markerList[index] = 1
+							break
+						index+=1
 
-				if(index == len(self.labelsDict[audioFile])):
-					#not found. Add as FP
-					FP += 1
+					if(index == len(self.labelsDict[audioFile])):
+						#not found. Add as FP
+						FP += 1
 			
-			#check markerList, add all FN
-			for marker in markerList:
-				if marker == 0:
-					FN += 1
+				#check markerList, add all FN
+				for marker in markerList:
+					if marker == 0:
+						FN += 1
 
-			for groundtruth_label in self.labelsDict[audioFile]:
-				if groundtruth_label in predictedDS.labelsDict[audioFile]:
-					#the class was predicted correctly
-					if groundtruth_label in classWiseMetrics.keys():
-						classWiseMetrics[groundtruth_label][0] += 1
+				for groundtruth_label in self.labelsDict[audioFile]:
+					if groundtruth_label in predictedDS.labelsDict[audioFile]:
+						#the class was predicted correctly
+						if groundtruth_label in classWiseMetrics.keys():
+							classWiseMetrics[groundtruth_label][0] += 1
+						else:
+							#Format: TP, FP, FN
+							classWiseMetrics[groundtruth_label] = [1, 0, 0]
 					else:
-						#Format: TP, FP, FN
-						classWiseMetrics[groundtruth_label] = [1, 0, 0]
-				else:
-					#Not predicted --> FN
-					if groundtruth_label in classWiseMetrics.keys():
-						classWiseMetrics[groundtruth_label][2] += 1
-					else:
-						classWiseMetrics[groundtruth_label] = [0, 0, 1]
+						#Not predicted --> FN
+						if groundtruth_label in classWiseMetrics.keys():
+							classWiseMetrics[groundtruth_label][2] += 1
+						else:
+							classWiseMetrics[groundtruth_label] = [0, 0, 1]
 
-			for predicted_label in predictedDS.labelsDict[audioFile]:
-				if predicted_label not in self.labelsDict[audioFile]:
-					#Predicted but not in Groundtruth --> FP
-					if predicted_label in classWiseMetrics.keys():
-						classWiseMetrics[predicted_label][1] += 1
-					else:
-						classWiseMetrics[predicted_label] = [0, 1, 0]
+				for predicted_label in predictedDS.labelsDict[audioFile]:
+					if predicted_label not in self.labelsDict[audioFile]:
+						#Predicted but not in Groundtruth --> FP
+						if predicted_label in classWiseMetrics.keys():
+							classWiseMetrics[predicted_label][1] += 1
+						else:
+							classWiseMetrics[predicted_label] = [0, 1, 0]
 
 
 		if(TP + FP != 0):
