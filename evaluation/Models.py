@@ -13,17 +13,32 @@ class FileFormat(object):
 			self.labelsDict = {}
 			with open(self.filepath) as filename:
 				for line in filename:
-					audioFile = line.split("\t")[0].split(".wav")[0].split(".flac")[0].strip()
-					startTime = line.split("\t")[1].strip()
-					endTime = line.split("\t")[2].strip()
-					label = line.split("\t")[3].strip()
+					lineArr = line.split("\t")
+					#audioFile must be present, make it hard
+					audioFile = lineArr[0].split(".wav")[0].split(".flac")[0].strip()
+					try:
+						startTime = lineArr[1].strip()
+					except Exception as ex1:
+						startTime = ""
+					try:
+						endTime = lineArr[2].strip()
+					except Exception as ex2:
+						endTime = ""
+					try:
+						label = lineArr[3].strip()
+					except Exception as ex3:
+						label = ""
 
 					if audioFile not in self.labelsDict.keys():
 						#does not exist
-						self.labelsDict[audioFile] = [label]
+						if label is not "":
+							self.labelsDict[audioFile] = [label]
+						else:
+							self.labelsDict[audioFile] = []
 					else:
 						#exists
-						self.labelsDict[audioFile].append(label)
+						if label is not "":
+							self.labelsDict[audioFile].append(label)
 
 			filename.close()
 			#Debug Print
