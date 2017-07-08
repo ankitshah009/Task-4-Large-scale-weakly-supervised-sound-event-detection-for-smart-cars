@@ -168,7 +168,7 @@ class FileFormat(object):
 					#1. Check if it is present inside groundTruth, if yes push to TP, mark the existance of that groundtruth label
 					index = 0
 					for groundtruth_label in self.labelsDict[audioFile]:
-						if(predicted_label == groundtruth_label):
+						if(predicted_label == groundtruth_label and markerList[index] != 1):
 							TP += 1
 							markerList[index] = 1
 							break
@@ -250,7 +250,8 @@ class FileFormat(object):
 		
 		classWisePrecision = classWisePrecision / classCount
 		classWiseRecall = classWiseRecall / classCount
-		classWiseF1 = 2*classWisePrecision*classWiseRecall / float(classWisePrecision + classWiseRecall)
+		if(classWisePrecision + classWiseRecall != 0.0):
+			classWiseF1 = 2*classWisePrecision*classWiseRecall / float(classWisePrecision + classWiseRecall)
 
 		output += "\n\n\tComplete Metrics (Computed Class Wise Average)\n\n"
 		output += "\tPrecision = " + str(classWisePrecision*100.0) + "\n"
