@@ -11,7 +11,7 @@ sets:
         fold_list: [1]
         evaluation_mode: folds
     feature_stacker:
-      stacking_recipe: mfcc
+      stacking_recipe: mel
     feature_normalizer:
       enable: true
     feature_aggregator:
@@ -34,7 +34,7 @@ sets:
             fastmath: false
             optimizer: None
             openmp: false
-            threads: 1
+            threads: 10
             CNR: true
 
         validation:
@@ -47,13 +47,13 @@ sets:
           batch_size: 256
           shuffle: true
           callbacks:
-            - type: EarlyStopping
+            - type: Stopper
               parameters:
-                monitor: categorical_accuracy
+                monitor: binary_accuracy
+                initial_delay: 100
                 min_delta: 0.001
                 patience: 10
                 verbose: 0
-                mode: max
 
         model:
           config:
@@ -81,7 +81,7 @@ sets:
               config:
                 units: CLASS_COUNT
                 kernel_initializer: uniform
-                activation: softmax
+                activation: sigmoid
 
           loss: binary_crossentropy
 
@@ -89,14 +89,14 @@ sets:
             type: Adam
 
           metrics:
-            - categorical_accuracy
+            - binary_accuracy
 
     recognizer:
       enable: true
 
       frame_accumulation:
         enable: false
-        type: sum
+
       frame_binarization:
         enable: true
         type: global_threshold
@@ -108,9 +108,9 @@ sets:
         window_length_seconds: 0.54
 
       event_post_processing:
-        enable: true
-        minimun_event_length_seconds: 0.1
-        minimum_event_gap_second: 0.1
+        enable: false
+        #minimun_event_length_seconds: 0.1
+        #minimum_event_gap_second: 0.1
         #type: majority_vote         # [maximum, majority_vote]
 
     evaluator:
@@ -194,7 +194,7 @@ defaults:
           class: logging.handlers.RotatingFileHandler
           level: INFO                                           # Max logging level to save
           formatter: normal                                     # [simple, extended]
-          filename: custom.info.log
+          filename: task4.info.log
           maxBytes: 10485760                                    # 10MB
           backupCount: 20
           encoding: utf8
@@ -203,7 +203,7 @@ defaults:
           class: logging.handlers.RotatingFileHandler
           level: DEBUG                                          # Max logging level to save
           formatter: normal                                     # [simple, extended]
-          filename: custom.debug.log
+          filename: task4.debug.log
           maxBytes: 10485760                                    # 10MB
           backupCount: 20
           encoding: utf8
@@ -212,7 +212,7 @@ defaults:
           class: logging.handlers.RotatingFileHandler
           level: ERROR                                          # Max logging level to save
           formatter: extended                                   # [simple, extended]
-          filename: custom.errors.log
+          filename: task4.errors.log
           maxBytes: 10485760                                    # 10MB
           backupCount: 20
           encoding: utf8
@@ -345,17 +345,17 @@ defaults:
       init_params: wmc
 
     mlp:
-      seed: 1
+      seed: 0
 
       keras:
         backend: theano
         backend_parameters:
           floatX: float64
-          device: cpu
+          device: gpu0
           fastmath: false
           optimizer: None
           openmp: false
-          threads: 1
+          threads: 10
           CNR: true
 
       validation:
@@ -368,13 +368,13 @@ defaults:
         batch_size: 256
         shuffle: true
         callbacks:
-          - type: EarlyStopping
+          - type: Stopper
             parameters:
-              monitor: val_categorical_accuracy         # quantity to be monitored.
+              monitor: binary_accuracy              # quantity to be monitored.
               min_delta: 0.001                          # minimum change in the monitored quantity to qualify as an improvement, i.e. an absolute change of less than min_delta, will count as no improvement.
               patience: 10                              # number of epochs with no improvement after which training will be stopped.
               verbose: 0                                # verbosity mode.
-              mode: max                                 # {auto, min, max}. In min mode, training will stop when the quantity monitored has stopped decreasing; in max mode it will stop when the quantity monitored has stopped increasing; in auto mode, the direction is automatically inferred from the name of the monitored quantity.
+              #mode: max                                 # {auto, min, max}. In min mode, training will stop when the quantity monitored has stopped decreasing; in max mode it will stop when the quantity monitored has stopped increasing; in auto mode, the direction is automatically inferred from the name of the monitored quantity.
 
       model:
         # class_nam can be any standard Keras layer, e.g. Dense, Activation, Dropout
@@ -412,7 +412,7 @@ defaults:
           type: Adam
 
         metrics:
-          - categorical_accuracy
+          - binary_accuracy
 
   # ==========================================================
   # Recognizer
