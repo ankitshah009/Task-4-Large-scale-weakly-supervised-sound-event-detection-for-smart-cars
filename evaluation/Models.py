@@ -14,7 +14,6 @@ class FileFormat(object):
 			with open(self.filepath) as filename:
 				for line in filename:
 					lineArr = line.split("\t")
-					print len(lineArr)
 					#audioFile must be present, make it hard
 					if len(lineArr) == 4:
 						if float(lineArr[2].strip()) == 0.0:
