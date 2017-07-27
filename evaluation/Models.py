@@ -14,8 +14,16 @@ class FileFormat(object):
 			with open(self.filepath) as filename:
 				for line in filename:
 					lineArr = line.split("\t")
+					print len(lineArr)
 					#audioFile must be present, make it hard
-					audioFile = lineArr[0].split(".wav")[0].split(".flac")[0].strip()
+					if len(lineArr) == 4:
+						if float(lineArr[2].strip()) == 0.0:
+							continue
+						else:
+							audioFile = lineArr[0].split(".wav")[0].split(".flac")[0].strip()
+					else:
+						audioFile = lineArr[0].split(".wav")[0].split(".flac")[0].strip()
+
 					try:
 						startTime = lineArr[1].strip()
 					except Exception as ex1:
