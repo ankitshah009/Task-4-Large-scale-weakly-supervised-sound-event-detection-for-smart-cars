@@ -1,4 +1,4 @@
-#### This script is a wrapper of sed_eval to compute metrics for Task 4 - SUbtask B
+## This script is a wrapper of sed_eval to compute metrics for Task 4 - Subtask B
 
 #### Instruction to run the script: 
 1. Get the task4_subtaskB_evaluation.py file from this directory. 
