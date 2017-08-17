@@ -6,7 +6,7 @@ Instruction to run the script:-
 1. Get the task4_subtaskB_evaluation.py file from this directory. 
 2. Git clone of sed_eval [https://github.com/TUT-ARG/sed_eval]
 3. We will call sed_eval path as $SED_EVAL_ROOT
-4. Place the reference (groundtruth_file) and estimated (classifier prediction file) in the path $SED_EVAL_ROOT/data/sound_event
+4. Place the reference (groundtruth_file) and estimated (classifier prediction file) in the path $SED_EVAL_ROOT/tests/data/sound_event
 5. Copy task4_subtaskB_evaluation.py file to $SED_EVAL_ROOT/tests
 6. cd $SED_EVAL_ROOT/tests
 7. Command to run " python task4_subtaskB_evaluation.py <reference file name> <predicted file name>
