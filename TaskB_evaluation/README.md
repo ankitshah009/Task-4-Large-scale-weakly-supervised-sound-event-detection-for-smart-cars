@@ -7,7 +7,7 @@
 4. Place the reference (groundtruth_file) and estimated (classifier prediction file) in the path $SED_EVAL_ROOT/tests/data/sound_event
 5. Copy task4_subtaskB_evaluation.py file to $SED_EVAL_ROOT/tests
 6. cd $SED_EVAL_ROOT/tests
-7. Command to run " python task4_subtaskB_evaluation.py (reference file name) (predicted file name) "
+7. Command to run: "python task4_subtaskB_evaluation.py <reference filename> <estimated filename>"
 
 Reference file should be in the following format (Sed_eval expects a scene label, which was assigned to be YouTube for every row):
 [filename (string)][tab][event onset time in seconds (float)][tab] YouTube [tab] [event offset time in seconds (float)][tab][event label (string)]
