@@ -1,9 +1,6 @@
-## Task 4 - SubTask B metrics evaluation script. 
+#### This script is a wrapper of sed_eval to compute metrics for Task 4 - SUbtask B
 
-#### This script was created referencing an example of sed_eval and calls the sed_eval to perform metrics computation
-Purpose of adding this script is to make evaluation convenient for participants
-
-#### Instruction to run the script:- 
+#### Instruction to run the script: 
 1. Get the task4_subtaskB_evaluation.py file from this directory. 
 2. Git clone of sed_eval [https://github.com/TUT-ARG/sed_eval]
 3. We will call sed_eval path as $SED_EVAL_ROOT
@@ -12,10 +9,10 @@ Purpose of adding this script is to make evaluation convenient for participants
 6. cd $SED_EVAL_ROOT/tests
 7. Command to run " python task4_subtaskB_evaluation.py (reference file name) (predicted file name) "
 
-Reference file should be in the following format
-Filename \t Scene(youtube for task 4) \t Start_time \t End_time \t Class name
+Reference file should be in the following format (Sed_eval expects a scene label, which was assigned to be YouTube for every row):
+[filename (string)][tab][event onset time in seconds (float)][tab] YouTube [tab] [event offset time in seconds (float)][tab][event label (string)]
 
-Estimated file should be in the following format
-Filename \t Start_time \t End_time \t Class name
+Estimated file should be in the following format (It is not necessary to include scene label):
+[filename (string)][tab][event onset time in seconds (float)][tab][event offset time in seconds (float)][tab][event label (string)]
 
-Note: - The filename must match for both reference file and estimated file. 
+Note: Remember the filename convention must match for both reference file and estimated file. 
