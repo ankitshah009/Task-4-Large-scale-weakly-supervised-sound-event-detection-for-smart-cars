@@ -31,7 +31,7 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 ## Index
 1. Script to download the development data for Task 4
 
-2. Script to evaluate Task 4 - Subtask A (Audio tagging)
+2. Scripts to evaluate Task 4 - Subtask A (Audio tagging) and Subtask B
 
 3. Strong Label's annotations for Testing
 
@@ -137,10 +137,11 @@ Total training set downloaded files - 51172
 #### 2. Script to evaluate Task 4 - Subtask A (Audio tagging)
 -------------------------------------------------
 
-#### Usage
+#### Usage Subtask A - refer to folder called "evaluation" and use the following command.
 
 $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv prediction/perfect_prediction.csv output/perfect_prediction_output.csv
 
+#### Usage Subtask B - refer to folder called "TaskB_evaluation" for instructions.
 
 -------------------------------------------------
 
