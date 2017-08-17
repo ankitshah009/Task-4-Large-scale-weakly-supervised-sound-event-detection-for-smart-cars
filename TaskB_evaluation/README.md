@@ -10,7 +10,7 @@ Purpose of adding this script is to make evaluation convenient for participants
 4. Place the reference (groundtruth_file) and estimated (classifier prediction file) in the path $SED_EVAL_ROOT/tests/data/sound_event
 5. Copy task4_subtaskB_evaluation.py file to $SED_EVAL_ROOT/tests
 6. cd $SED_EVAL_ROOT/tests
-7. Command to run " python task4_subtaskB_evaluation.py <reference file name> <predicted file name>
+7. Command to run " python task4_subtaskB_evaluation.py (reference file name) (predicted file name) "
 
 Reference file should be in the following format
 Filename \t Scene(youtube for task 4) \t Start_time \t End_time \t Class name
