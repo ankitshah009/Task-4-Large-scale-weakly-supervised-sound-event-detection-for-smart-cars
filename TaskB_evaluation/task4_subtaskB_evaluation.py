@@ -44,6 +44,10 @@ def test_dcase_style2(argument1,argument2):
     output += segment_based_metrics.result_report_class_wise()
     output += " \n"
     print output
+    output_file = argument2 + '_output_taskb.txt'
+    with open(output_file,'w') as f1:
+    	f1.write(output)
+    f1.close()
 
 if __name__ == "__main__":
 	if len(sys.argv) != 3:
