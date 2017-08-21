@@ -4,6 +4,7 @@ import sys
 
 class FileFormat(object):
 	def __init__(self, filepath):
+		self.count = 0 
 		self.filepath = filepath
 		self.labelDict = self.readLabels()
 
@@ -17,10 +18,16 @@ class FileFormat(object):
 					#audioFile must be present, make it hard
 					if len(lineArr) == 4:
 						if float(lineArr[2].strip()) == 0.0:
+							if(lineArr[0].split(".wav")[0].split(".flac")[0].strip() not in self.labelsDict.keys()): 
+								self.count = self.count + 1
 							continue
 						else:
+							if(lineArr[0].split(".wav")[0].split(".flac")[0].strip() not in self.labelsDict.keys()): 
+								self.count = self.count + 1
 							audioFile = lineArr[0].split(".wav")[0].split(".flac")[0].strip()
 					else:
+						if(lineArr[0].split(".wav")[0].split(".flac")[0].strip() not in self.labelsDict.keys()): 
+							self.count = self.count + 1
 						audioFile = lineArr[0].split(".wav")[0].split(".flac")[0].strip()
 
 					try:
@@ -169,7 +176,7 @@ class FileFormat(object):
 			Metric_File.write("Precision = " + str(Precision*100.0) + "\n")
 			Metric_File.write("Recall = " + str(Recall*100.0) + "\n")
 			Metric_File.write("F1 Score = " + str(F1*100.0) + "\n")
-			Metric_File.write("Number of Audio Files = " + str(len(self.labelsDict.keys())))
+			Metric_File.write("Number of Audio Files = " + str(self.count))
 		Metric_File.close()
 
 	
@@ -279,13 +286,13 @@ class FileFormat(object):
 		output += "\tPrecision = " + str(classWisePrecision*100.0) + "\n"
 		output += "\tRecall = " + str(classWiseRecall*100.0) + "\n"
 		output += "\tF1 Score = " + str(classWiseF1*100.0) + "\n"
-		output += "\tNumber of Audio Files = " + str(len(self.labelsDict.keys())) + "\n\n"
+		output += "\tNumber of Audio Files = " + str(predictedDS.count) + "\n\n"
 		
 		output += "\n\n\tComplete Metrics (Computed Instance Wise) - These metrics will be used for system evaluation.\n\n"
 		output += "\tPrecision = " + str(Precision*100.0) + "\n"
 		output += "\tRecall = " + str(Recall*100.0) + "\n"
 		output += "\tF1 Score = " + str(F1*100.0) + "\n"
-		output += "\tNumber of Audio Files = " + str(len(self.labelsDict.keys())) + "\n\n"
+		output += "\tNumber of Audio Files = " + str(predictedDS.count) + "\n\n"
 				
 		return output
 
