@@ -298,7 +298,7 @@ def main(argv):
             Task 4: Large-scale weakly supervised sound event detection for smart cars
             ---------------------------------------------
                 Carnegie Mellon University
-                Author:  Rohan Badlani ( rohan.badlani@gmail.com )
+                Author:  Rohan Badlani/Ankit Shah ( rohan.badlani@gmail.com/aps1@andrew.cmu.edu )
 
             System description
             The baseline system for task 4 in DCASE 2017 Challenge.
