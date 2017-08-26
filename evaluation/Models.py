@@ -250,7 +250,7 @@ class FileFormat(object):
 			F1 = 0.0
 
 		output = ""
-		output += "\n\nClass-based Metrics\n\n"
+		output += "\n\nClass-wise Metrics\n\n"
 
 		classWisePrecision = 0.0
 		classWiseRecall = 0.0
@@ -282,13 +282,13 @@ class FileFormat(object):
 		if(classWisePrecision + classWiseRecall != 0.0):
 			classWiseF1 = 2*classWisePrecision*classWiseRecall / float(classWisePrecision + classWiseRecall)
 
-		output += "\n\n\tComplete Metrics (Macro Average or Class Based)\n\n"
+		output += "\n\n\tComplete Metrics (Macro Average or Class-Based)\n\n"
 		output += "\tPrecision = " + str(classWisePrecision*100.0) + "\n"
 		output += "\tRecall = " + str(classWiseRecall*100.0) + "\n"
 		output += "\tF1 Score = " + str(classWiseF1*100.0) + "\n"
 		output += "\tNumber of Audio Files = " + str(predictedDS.count) + "\n\n"
 		
-		output += "\n\n\tComplete Metrics (Micro Average or Instance Based) - These metrics will be used for system evaluation.\n\n"
+		output += "\n\n\tComplete Metrics (Micro Average or Instance-Based) - These metrics will be used for system evaluation.\n\n"
 		output += "\tPrecision = " + str(Precision*100.0) + "\n"
 		output += "\tRecall = " + str(Recall*100.0) + "\n"
 		output += "\tF1 Score = " + str(F1*100.0) + "\n"
