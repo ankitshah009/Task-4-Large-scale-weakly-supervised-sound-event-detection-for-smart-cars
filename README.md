@@ -7,7 +7,7 @@
 * August 16: Addition of script for SubTaskB computation for participant's convenience
 * July 19: Update to params for Task 4 to maintain consistency with Task 3 parameters
 * July 8: Corner case SubTaskA metrics - bug fix for compute metrics function. Additional files added to the prediction folder located in evaluation for sanity checks of metrics computation script. 
-* July 4: [ROHAN BADLANI] Added development as well as challenge support after incorporating latest paramount changes from DCASE Framework repository made by Toni on July 3rd. Integration testing for challenge and development setup done.  
+* July 4: Added development as well as challenge support after incorporating latest paramount changes from DCASE Framework repository made by Toni on July 3rd. Integration testing for challenge and development setup done.  
 * June 26: Added script to compute duration of audio files. Added Training and testing set duration of audio files as a reference for participants to cross check with. Alternate Method to download audio for Development Set [Training and Testing Set] updated.  
 * June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
 * June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
