@@ -160,4 +160,7 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 
 $bash bash_find_duration_of_audio_file.sh <training/testing/evaluation> \<Audio Path\> \<Output Path where duration list will be written\>
 
- 
+#### Results for Task 4 DCASE 2017 challenge
+-------------------------------------------------
+
+DCASE 2017 Results - http://www.cs.tut.fi/sgn/arg/dcase2017/challenge/task-large-scale-sound-event-detection-results
