@@ -42,6 +42,17 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 -------------------------------------------------
 
 
+#### 1. Direct-download of the testing and evaluation datasets
+
+Note that the annotations for the evaluation set have not been released yet.
+[Development: Training](https://goo.gl/GiCCiX)
+[Development: Testing](https://goo.gl/rXnXh3)
+[Evaluation](https://dl.dropboxusercontent.com/s/bbgqfd47cudwe9y/DCASE_2017_evaluation_set_audio_files.zip)
+
+
+-------------------------------------------------
+
+
 #### 2. Script to download the development data for Task 4
 -------------------------------------------------
 
