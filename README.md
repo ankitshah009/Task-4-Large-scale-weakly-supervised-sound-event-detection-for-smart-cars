@@ -3,6 +3,7 @@
 
 ### Update Log 
 -----------------
+* Nov 20: We've provided direct-download links for the development and evaluation sets in Section 1.
 * August 16: Addition of script for SubTaskB computation for participant's convenience
 * July 19: Update to params for Task 4 to maintain consistency with Task 3 parameters
 * July 8: Corner case SubTaskA metrics - bug fix for compute metrics function. Additional files added to the prediction folder located in evaluation for sanity checks of metrics computation script. 
@@ -29,17 +30,19 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 ## Index
-1. Script to download the development data for Task 4
+1. Direct-download of the testing and evaluation datasets.
 
-2. Scripts to evaluate Task 4 - Subtask A (Audio tagging) and Subtask B
+2. Script to download the development data for Task 4
 
-3. Strong Label's annotations for Testing
+3. Scripts to evaluate Task 4 - Subtask A (Audio tagging) and Subtask B
+
+4. Strong Label's annotations for Testing
 
 
 -------------------------------------------------
 
 
-#### 1. Script to download the development data for Task 4
+#### 2. Script to download the development data for Task 4
 -------------------------------------------------
 
 #### Prerequisite installations
@@ -131,10 +134,14 @@ Total testing set downloaded files - 488
 
 Total training set downloaded files - 51172
 
+#### Script to compute duration of audio files. 
+
+$bash bash_find_duration_of_audio_file.sh <training/testing/evaluation> \<Audio Path\> \<Output Path where duration list will be written\>
+
 -------------------------------------------------
 
 
-#### 2. Script to evaluate Task 4 - Subtask A (Audio tagging)
+#### 3. Script to evaluate Task 4 - Subtask A (Audio tagging)
 -------------------------------------------------
 
 #### Usage Subtask A - refer to folder called "evaluation" and use the following command.
@@ -146,7 +153,7 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 -------------------------------------------------
 
 
-#### 3. Strong Label's annotations for Testing
+#### 4. Strong Label's annotations for Testing
 -------------------------------------------------
 
 1. Only one person was involved in the annotation of each 10-sec clip and all the clips were randomly divided and assigned to 5 people. 
@@ -154,11 +161,6 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 3. The strong labels correspond to the file: groundtruth_strong_label_testing_set.csv
 4. The format of strong labels is the same as the DCASE format (Task 3 and Task 4: Audio tagging).
 5. Less than 2% of the 10-sec clips had the presence of a sound according to AudioSet, but didn't seem to contain the sound event. Thus, start and end time were assigned 0.
-
-#### 4. Script to compute duration of audio files. 
---------------------------------------------------
-
-$bash bash_find_duration_of_audio_file.sh <training/testing/evaluation> \<Audio Path\> \<Output Path where duration list will be written\>
 
 #### Results for Task 4 DCASE 2017 challenge
 -------------------------------------------------
