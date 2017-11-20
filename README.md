@@ -44,7 +44,7 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 
 #### 1. Direct-download of the testing and evaluation datasets
 
-The annotations for the evaluation set have not been released yet.
+The annotations for the evaluation set have not been released yet. The password can be shared via sending a request email to Ankit Shah (ankit.tronix@gmail.com) or Benjamin Elizalde (bmartin1@andrew.cmu.edu) 
 
 [Development: Training](https://goo.gl/rXnXh3) 
 
