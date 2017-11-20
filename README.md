@@ -45,6 +45,7 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 #### 1. Direct-download of the testing and evaluation datasets
 
 The annotations for the evaluation set have not been released yet.
+
 [Development: Training](https://goo.gl/rXnXh3) 
 
 [Development: Testing](https://goo.gl/GiCCiX)
