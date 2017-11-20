@@ -3,8 +3,6 @@
 
 ### Update Log 
 -----------------
-[a link](https:www.google.com)
-
 * August 16: Addition of script for SubTaskB computation for participant's convenience
 * July 19: Update to params for Task 4 to maintain consistency with Task 3 parameters
 * July 8: Corner case SubTaskA metrics - bug fix for compute metrics function. Additional files added to the prediction folder located in evaluation for sanity checks of metrics computation script. 
@@ -16,6 +14,7 @@
 * May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
 * April 2: Added strong labels.
 * April 1: Added evaluation folder. 
+
 
 ## Coordinators
 
