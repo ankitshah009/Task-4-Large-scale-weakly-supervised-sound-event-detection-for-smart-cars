@@ -3,7 +3,7 @@
 
 ### Update Log 
 -----------------
-* Nov 20: We've provided direct-download links for the audio fo the development and evaluation sets in Section 1.
+* Nov 20: We've provided direct-download links for the audio of the development and evaluation sets in Section 1.
 * August 16: Addition of script for SubTaskB computation for participant's convenience
 * July 19: Update to params for Task 4 to maintain consistency with Task 3 parameters
 * July 8: Corner case SubTaskA metrics - bug fix for compute metrics function. Additional files added to the prediction folder located in evaluation for sanity checks of metrics computation script. 
@@ -30,7 +30,7 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 ## Index
-1. Direct-download of the testing and evaluation datasets.
+1. Direct-download for the audio of the development and evaluation sets
 
 2. Script to download the development data for Task 4
 
