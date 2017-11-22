@@ -52,6 +52,8 @@ The annotations for the evaluation set have not been released yet. The password 
 
 [Evaluation](https://dl.dropboxusercontent.com/s/bbgqfd47cudwe9y/DCASE_2017_evaluation_set_audio_files.zip)
 
+Quick download of large files via Google Drive. 
+Thanks to Justin Salamon for sharing the trick - https://www.quora.com/How-do-I-download-a-very-large-file-from-Google-Drive/answer/Shane-F-Carr
 
 -------------------------------------------------
 
