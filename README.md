@@ -3,6 +3,7 @@
 
 ### Update Log 
 -----------------
+* Dec 13: Added Groundtruth release folder - Contains groundtruth information for evaluation, testing set. 
 * Nov 20: We've provided direct-download links for the audio of the development and evaluation sets in Section 1.
 * August 16: Addition of script for SubTaskB computation for participant's convenience
 * July 19: Update to params for Task 4 to maintain consistency with Task 3 parameters
