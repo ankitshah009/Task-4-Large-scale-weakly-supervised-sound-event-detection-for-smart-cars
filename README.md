@@ -47,9 +47,9 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 
 The annotations for the evaluation set have not been released yet. The password can be shared via sending a request email to Ankit Shah (ankit.tronix@gmail.com) or Benjamin Elizalde (bmartin1@andrew.cmu.edu) 
 
-[Development: Training](https://goo.gl/rXnXh3) 
+[Development: Training](https://goo.gl/PJUVAd) 
 
-[Development: Testing](https://goo.gl/GiCCiX)
+[Development: Testing](https://goo.gl/ip8JXW)
 
 [Evaluation](https://dl.dropboxusercontent.com/s/bbgqfd47cudwe9y/DCASE_2017_evaluation_set_audio_files.zip)
 
@@ -123,7 +123,7 @@ Sample Usage -  python download_audio.py training_set.csv
 
 #### Alternate Audio Download Method. 
 
-* Development Set :- Training - https://goo.gl/rXnXh3. Testing - https://goo.gl/GiCCiX
+* Development Set :- Training - https://goo.gl/PJUVAd. Testing - https://goo.gl/ip8JXW
 * DCASE Forum [https://groups.google.com/forum/#!forum/dcase-discussions] contains password to the download files. 
 
 #### User Modifiable Parameters and Options 
