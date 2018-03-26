@@ -28,7 +28,7 @@ Ankit Shah (ankit.tronix@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
 
 ## Annotations, Baseline and Subtask A Metric
 
-Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu)
+Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.edu), Ankit Shah (ankit.tronix@gmail.com)
 
 ## Index
 1. Direct-download for the audio of the development and evaluation sets
