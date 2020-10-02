@@ -184,3 +184,28 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 -------------------------------------------------
 
 DCASE 2017 Results - http://www.cs.tut.fi/sgn/arg/dcase2017/challenge/task-large-scale-sound-event-detection-results
+
+
+### Citation
+--------------------------------------------
+```
+@inproceedings{mesaros2017dcase,
+  title={DCASE 2017 challenge setup: Tasks, datasets and baseline system},
+  author={Mesaros, Annamaria and Heittola, Toni and Diment, Aleksandr and Elizalde, Benjamin and Shah, Ankit and Vincent, Emmanuel and Raj, Bhiksha and Virtanen, Tuomas},
+  booktitle={DCASE 2017-Workshop on Detection and Classification of Acoustic Scenes and Events},
+  year={2017}
+}
+
+```
+OR 
+
+```
+@techreport{Badlani2017,
+    Author = "Badlani, Rohan and Shah, Ankit and Elizalde, Benjamin",
+    title = "{DCASE} 2017 Challenge Setup: Tasks, Datasets and Baseline System",
+    institution = "DCASE2017 Challenge",
+    year = "2017",
+    month = "September",
+    abstract = "DCASE 2017 Challenge consists of four tasks: acoustic scene classification, detection of rare sound events, sound event detection in real-life audio, and large-scale weakly supervised sound event detection for smart cars. This paper presents the setup of these tasks: task definition, dataset, experimental setup, and baseline system results on the development dataset. The baseline systems for all tasks rely on the same implementation using multilayer perceptron and log mel-energies, but differ in the structure of the output layer and the decision making process, as well as the evaluation of system output using task specific metrics."
+}
+```
