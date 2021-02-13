@@ -16,8 +16,10 @@ def format_audio(input_audio_file,output_audio_file):
 	os.system(cmdstring)
 	cmdstring1 = "sox %s -G -b 16 -r 44100 %s" %(temp_audio_file,output_audio_file)
 	os.system(cmdstring1)
-	cmdstring2 = "rm -rf %s" %(temp_audio_file)
+	cmdstring2 = "del %s" % (temp_audio_file)
 	os.system(cmdstring2)
+	cmdstring3 = "del %s" % (input_audio_file)
+	os.system(cmdstring3) # delete the original video
 
 #Trim audio based on start time and duration of audio. 
 def trim_audio(input_audio_file,output_audio_file,start_time,duration):
@@ -25,9 +27,11 @@ def trim_audio(input_audio_file,output_audio_file,start_time,duration):
 	#print output_audio_file
 	cmdstring = "sox %s %s trim %s %s" %(input_audio_file,output_audio_file,start_time,duration)
 	os.system(cmdstring)
+	cmdstring1 = "del %s" % (input_audio_file) 
+	os.system(cmdstring1) # delete the complete audio
 
 def multi_run_wrapper(args):
-   return download_audio_method(*args)
+	return download_audio_method(*args)
 
 #Method to download audio - Downloads the best audio available for audio id, calls the formatting audio function and then segments the audio formatted based on start and end time. 
 def download_audio_method(line,csv_file):
@@ -49,19 +53,19 @@ def download_audio_method(line,csv_file):
 		#print output_folder
 		if not os.path.exists(output_folder):
 			os.makedirs(output_folder)
-		path_to_download = output_folder + "/Y" + query_id + "." + bestaudio.extension
+		path_to_download = output_folder + "\\Y" + query_id + "." + bestaudio.extension
 		#print path_to_download
 		bestaudio.download(path_to_download)
 		formatted_folder = sys.argv[1].split('.csv')[0].split("/")[-1] + "_" + csv_file.split('.csv')[0] + "_" + "audio_formatted_downloaded"
 		if not os.path.exists(formatted_folder):
 			os.makedirs(formatted_folder)
-		path_to_formatted_audio = formatted_folder + "/Y" + query_id + ".wav"
+		path_to_formatted_audio = formatted_folder + "\\Y" + query_id + ".wav"
 		format_audio(path_to_download,path_to_formatted_audio)
 		#Trimming code
 		segmented_folder = sys.argv[1].split('.csv')[0].split("/")[-1] + "_" + csv_file.split('.csv')[0] +  "_" + "audio_formatted_and_segmented_downloads"
 		if not os.path.exists(segmented_folder):
 			os.makedirs(segmented_folder)
-		path_to_segmented_audio = segmented_folder + "/Y" + query_id + '_' + start_seconds + '_' + end_seconds +  ".wav"
+		path_to_segmented_audio = segmented_folder + "\\Y" + query_id + '_' + start_seconds + '_' + end_seconds +  ".wav"
 		trim_audio(path_to_formatted_audio,path_to_segmented_audio,start_seconds,audio_duration)
 
 		#Remove the original audio and the formatted audio. Comment line to keep both. Delete "output_folder" or "formatted_folder" to keep one.  
