@@ -1,22 +1,6 @@
 
 # Task 4 Large-scale weakly supervised sound event detection for smart cars
 
-### Update Log 
------------------
-* Dec 13: Added Groundtruth release folder - Contains groundtruth information for evaluation, testing set. 
-* Nov 20: We've provided direct-download links for the audio of the development and evaluation sets in Section 1.
-* August 16: Addition of script for SubTaskB computation for participant's convenience
-* July 19: Update to params for Task 4 to maintain consistency with Task 3 parameters
-* July 8: Corner case SubTaskA metrics - bug fix for compute metrics function. Additional files added to the prediction folder located in evaluation for sanity checks of metrics computation script. 
-* July 4: Added development as well as challenge support after incorporating latest paramount changes from DCASE Framework repository made by Toni on July 3rd. Integration testing for challenge and development setup done.  
-* June 26: Added script to compute duration of audio files. Added Training and testing set duration of audio files as a reference for participants to cross check with. Alternate Method to download audio for Development Set [Training and Testing Set] updated.  
-* June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
-* June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
-* June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
-* May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
-* April 2: Added strong labels.
-* April 1: Added evaluation folder. 
-
 
 ## Coordinators
 
@@ -47,9 +31,9 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 
 The annotations for the evaluation set have not been released yet. The password can be shared via sending a request email to Ankit Shah (ankit.tronix@gmail.com) or Benjamin Elizalde (bmartin1@andrew.cmu.edu) 
 
-[Development: Training](https://goo.gl/PJUVAd) 
+[Development: Training](https://goo.gl/PJUVAd) (Psswd Training file: DCASE_2017_training_set)
 
-[Development: Testing](https://goo.gl/ip8JXW)
+[Development: Testing](https://goo.gl/ip8JXW) (Psswd Testing file: DCASE_2017_evaluation_set)
 
 [Evaluation](https://dl.dropboxusercontent.com/s/bbgqfd47cudwe9y/DCASE_2017_evaluation_set_audio_files.zip)
 
@@ -171,10 +155,10 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 -------------------------------------------------
 
 
-#### 4. Strong Label's annotations for Testing
+#### 4. Annotation process for strong labels for Testing
 -------------------------------------------------
 
-1. Only one person was involved in the annotation of each 10-sec clip and all the clips were randomly divided and assigned to 5 people. 
+1. Only one person was involved in the annotation of each 10-sec clip and all the clips were randomly divided and assigned to 5 people. When a recording was identified as "hard" to annotate, it was revised by the three authors and a decision was made via majority vote.
 2. The sound event annotations were based on the audio and not the video.
 3. The strong labels correspond to the file: groundtruth_strong_label_testing_set.csv
 4. The format of strong labels is the same as the DCASE format (Task 3 and Task 4: Audio tagging).
@@ -197,15 +181,19 @@ DCASE 2017 Results - http://www.cs.tut.fi/sgn/arg/dcase2017/challenge/task-large
 }
 
 ```
-OR 
 
-```
-@techreport{Badlani2017,
-    Author = "Badlani, Rohan and Shah, Ankit and Elizalde, Benjamin",
-    title = "{DCASE} 2017 Challenge Setup: Tasks, Datasets and Baseline System",
-    institution = "DCASE2017 Challenge",
-    year = "2017",
-    month = "September",
-    abstract = "DCASE 2017 Challenge consists of four tasks: acoustic scene classification, detection of rare sound events, sound event detection in real-life audio, and large-scale weakly supervised sound event detection for smart cars. This paper presents the setup of these tasks: task definition, dataset, experimental setup, and baseline system results on the development dataset. The baseline systems for all tasks rely on the same implementation using multilayer perceptron and log mel-energies, but differ in the structure of the output layer and the decision making process, as well as the evaluation of system output using task specific metrics."
-}
-```
+### Update Log 
+-----------------
+* Dec 13: Added Groundtruth release folder - Contains groundtruth information for evaluation, testing set. 
+* Nov 20: We've provided direct-download links for the audio of the development and evaluation sets in Section 1.
+* August 16: Addition of script for SubTaskB computation for participant's convenience
+* July 19: Update to params for Task 4 to maintain consistency with Task 3 parameters
+* July 8: Corner case SubTaskA metrics - bug fix for compute metrics function. Additional files added to the prediction folder located in evaluation for sanity checks of metrics computation script. 
+* July 4: Added development as well as challenge support after incorporating latest paramount changes from DCASE Framework repository made by Toni on July 3rd. Integration testing for challenge and development setup done.  
+* June 26: Added script to compute duration of audio files. Added Training and testing set duration of audio files as a reference for participants to cross check with. Alternate Method to download audio for Development Set [Training and Testing Set] updated.  
+* June 24: Modification to groundtruth_strong_label_testing_set.csv - Fixed annotations for redundant class
+* June 21: Carriage return removal from groundtruth weak and strong labels csv files. 
+* June 17: Evaluation Script Update for ClassWise Metrics Computation for Task4 SubTaskAMetrics
+* May 1: Added baseline code (based on Task 3's system), performance and Subtask A metric code.
+* April 2: Added strong labels.
+* April 1: Added evaluation folder. 
