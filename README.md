@@ -29,7 +29,7 @@ Rohan Badlani (rohan.badlani@gmail.com), Benjamin Elizalde (bmartin1@andrew.cmu.
 
 #### 1. Direct-download for the audio of the development and evaluation sets
 
-The annotations for the evaluation set have not been released yet. The password can be shared via sending a request email to Ankit Shah (ankit.tronix@gmail.com) or Benjamin Elizalde (bmartin1@andrew.cmu.edu) 
+For any question please email Ankit Shah (ankit.tronix@gmail.com) or Benjamin Elizalde (bmartin1@andrew.cmu.edu) 
 
 [Development: Training](https://goo.gl/PJUVAd) (Psswd Training file: DCASE_2017_training_set)
 
