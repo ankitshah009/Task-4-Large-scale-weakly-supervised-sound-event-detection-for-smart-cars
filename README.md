@@ -167,7 +167,7 @@ $python TaskAEvaluate.py groundtruth/groundtruth_weak_label_testing_set.csv pred
 #### Results for Task 4 DCASE 2017 challenge
 -------------------------------------------------
 
-DCASE 2017 Results - http://www.cs.tut.fi/sgn/arg/dcase2017/challenge/task-large-scale-sound-event-detection-results
+DCASE 2017 Results - http://dcase.community/challenge2017/task-large-scale-sound-event-detection 
 
 
 ### Citation
